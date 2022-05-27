@@ -1,0 +1,37 @@
+div{
+    background-color: aqua;
+    height: 300px;
+}
+body{
+    background-color: black;
+}
+p{
+    color: chartreuse;
+}
+/* 원하는것을 쭉 쓴다. */
+/* class 셀렉터 */
+.red-text{
+    color: red;
+}
+.yellow-text{
+    color: yellow;
+}
+.big-size{
+    font-size: 50px;
+}
+.border{
+    border-style: solid; /*가늘게 만들기*/
+    border width: 1px;
+}
+/* id는ㄴ 한개만 존재하기에 아래와같은 방식은 안씀 */
+#div1{ 
+    background-color: aliceblue;
+}
+/* 모든 홈페이지에 있는거 없이 설정 */
+a{
+    text-decoration: none;
+    color: grey;
+}
+a:hover{
+    color: white;
+}
