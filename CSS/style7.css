@@ -1,0 +1,24 @@
+/* 글꼴 집합 */
+div.text{ 
+    font-family: "굴림", "궁서", "돋음";
+}
+/* 깔끔한 글꼴 사용하기 */
+div.text2{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+/* 글자의 기울임 지정 */
+div.text3{
+    font-style: italic;
+}
+/* 글자크기 */
+div.text4{
+    font-size: 25px
+}
+/* 줄간격 */
+div.text5{
+    line-height: normal
+}
+/* 줄간격 px 지정 */
+div.text6{
+    line-height: 300px
+}
