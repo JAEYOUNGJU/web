@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형 웹페이지 실습</title>
+</head>
+<body>
+    <style>
+        
+        .title{
+            font-size: 30px;
+        }
+        .menubar{
+            background-color: rgb(15, 15, 49);
+            color: white;
+            
+            padding: 10px;
+        }
+        @media(max-width: 1800px){ /*화면 가로길이가 1800px까지만 동작*/
+        body{
+            background-repeat: no-repeat;
+            background-image: url('https://wallpaperaccess.com/full/2817844.jpg') ;
+            
+        }
+        }
+        @media(max-width: 600px){
+           body{
+            background-image: url('https://wallpaperaccess.com/full/2817844.jpg');
+            }
+            h3{ color:black}
+        }
+        
+    
+    </style>
+    <center>
+     <div class="title"><h6>Hi, My name is Jaeyoung:)</h6></div>
+        </center>
+        <div class="menubar">메뉴바</div>
+    </body>
+</html>
