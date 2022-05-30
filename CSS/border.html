@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        /* 너무 다 붙어있을때 여백 주기 */
+        div{
+            margin-top: 10px; /*위에만 여백 지정*/
+            width: 300px;
+            padding: 10px;
+        }
+
+        .border-dotted{
+            border-style: dotted;
+            border-color: red;
+     
+            border-width: 5px;/*선 굵기*/
+        }
+        .border-dashed{
+            border: 4px black dashed;
+        }
+        .border-solid{
+            border-style: solid;
+            margin: 20 20 30 0;/*위아래 왼 오 방향찾아서 값 주기*/
+        }
+        body{
+            margin: 0;
+        }
+        
+    </style>
+
+
+    <div class="border-dotted">div1</div>
+    <div class="border-dashed">div2</div>
+    <div class="border-solid">div3</div>
+
+</body>
+</html>
