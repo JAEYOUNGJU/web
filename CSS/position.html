@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- div 가지고 만들기 -->
+<style>
+    .div1{
+        display: inline-block;
+        width: 300px;
+        height: 100px;
+        background-color: rgb(160, 208, 226);
+        text-align: center;
+        color: black;
+        line-height: 100px;/*글자의 높이 꼼수인데 원래 flex 사용해야함*/
+     }
+     
+    .div2{
+        display: inline-block;
+        position: absolute; /*가장 가까운 부모태그 만나서 그걸 기준(콘테이너)으로 앱솔루트 잡음*/
+        width: 100px;
+        height: 300px;
+        background-color: greenyellow;
+        text-align: center;
+        color: black;
+        line-height: 300px;/*글자의 높이 꼼수인데 원래 flex 사용해야함*/
+    }
+    .pic{
+        display: inline-block;
+        position: absolute; /*이 상황에서는 앱솔루트나 렐러티븐나 상관노*/
+        width: 200px;
+        height: 200px;
+        left: 100px;
+        top: 100px;
+        
+    } 
+    .div3{
+        display: inline-block;
+        position: absolute; /*가장 가까운 부모태그 만나서 그걸 기준(콘테이너)으로 앱솔루트 잡음*/
+        width: 300px;
+        height: 100px;
+        background-color: orange;
+        text-align: center;
+        color: black;
+        line-height: 100px;/*글자의 높이 꼼수인데 원래 flex 사용해야함*/
+        left: 100px;
+        top: 300px;
+    }
+    .div4{
+        display: inline-block;
+        position: relative; /*가장 가까운 부모태그 만나서 그걸 기준(콘테이너)으로 앱솔루트 잡음*/
+        width: 100px;
+        height: 300px;
+        background-color: hotpink;
+        text-align: center;
+        color: black;
+        line-height: 100px;/*글자의 높이 꼼수인데 원래 flex 사용해야함*/
+        
+    }
+    
+    
+    .container{
+        width: 400px;
+        height: 400px;
+        background-color: darkgoldenrod;
+       border: 1px black solid;
+        position:relative;/*position 있어야함*/
+        left: 30px 
+    }
+</style>
+<div class="container">
+    <div class="div1">1</div>
+    <div class="div2">2</div>
+    <div class="div3">3</div>
+    <div class="div4">4</div>
+    <img class="pic" src="image1.jpg" alt="">
+</div>
+
+</body>
+
+</html>
