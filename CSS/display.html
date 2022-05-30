@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        span{
+            display: block; /*display로 속성을 바꿔보기, 화면에 꽉차게*/
+            width: 100px;
+        }
+        div{
+            display: inline;/*자기 자신의 크기를 가짐*/
+        }
+        div.div1{
+            margin: 25px;
+            padding: 25px;/*안쪽 여백*/
+            background-color: yellow;
+            display: inline-block; /*위 두개를 섞은 느낌, 크기를 자유롭게 가져감*/
+            position: absolute;
+            width: 300px;
+            height: 100px;
+        }
+        div.div2{
+            /* 인라인은 크기 설정no
+            absolute 가장 가까운 태그가 position 속성이 static이 아닌 tag 기준(그런애가 없다면 화면기준)) 
+            relative는 원래 위치 기준 */
+            display: inline; /*위 두개를 섞은 느낌, 크기 설정할 수 없음*/
+           position: relative;/*원래있어야하는 위치에서 움직인것*/
+           /* position: absolute;밑에 값을주는 순간 화면기준으로 배치가됨, 어디를 기준으로 하는지 차이 */
+           left: 30px;
+           top: 30px;
+           background-color: pink;
+           
+        }
+    </style>
+    <!-- div.div1 입력시 쉽게 생성됨-->
+    <div class="div1">div1</div>
+    <!-- .div2 입력시 쉽게 생성됨 -->
+    <div class="div2">div2</div>
+    <div>일반div</div>
+    <div>일반div</div>
+    <span>일반span</span>
+    <span>일반span</span>
+    <h1>h1</h1>
+    <h1>h1</h1>
+    <header>header</header>
+    <footer>footer</footer>
+
+</body>
+</html>
