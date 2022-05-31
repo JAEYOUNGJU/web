@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3강_실습2</title>
+</head>
+    <style>
+        .button {
+            background-color: rgb(186, 35, 35);
+            display: inline-block;
+            color: white;
+            padding: 15px 30px;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            margin: 4px 2px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .button:hover{
+            background-color: rgb(237, 77, 189);
+        }
+
+        .button2 {
+            background-color: rgb(56, 56, 170);
+            
+        }
+        .button3 {
+         background-color: rgb(33, 158, 33);
+        }
+        btn
+    </style>
+   
+<body>
+    
+
+    <script>
+        let text = String(prompt('텍스트를 입력해주세요.'));
+
+        if (text == "") {
+            text = prompt('텍스트값을 입력해 주세요.');
+        }
+        console.log(text);
+       document.write("<center>"+ text +"</center>");
+     
+       /* let classes = document.getElementsByClassName("class_name");
+       classes.style.color = "#ff0000";
+       classes.className = "red blue"; */
+
+       /* function changeStyle() {
+            let $text = document.getElementsByClassName('text');
+            $text.style.color = "yellow"
+            }
+        function changeClass() {
+        let $target = document.getElementById('target');
+        $target.className = 'big-text'
+        } */
+
+       function btn() {
+           alert("빨간색으로 변경됩니다.");
+           let $text = document.getElementsByClassName('text');
+           $text.style.color = "yellow"
+        
+       }
+       function changeClass() {
+        let $target = document.getElementById('target');
+        $target.className = 'big-text'
+        }
+
+
+
+       function btn2() {
+           alert("파란색으로 변경됩니다.");
+       }
+       function btn3() {
+           alert("초록색으로 변경됩니다.");
+
+       }
+    </script>
+    <center>
+    <button class="button" onclick="btn()">빨강</button>
+    <button class="button button2" onclick="btn2()">파랑</button>
+    <button class="button button3" onclick="btn3()">초록</button>
+    
+</center>
+
+</body>
+</html>
