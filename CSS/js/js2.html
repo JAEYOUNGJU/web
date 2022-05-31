@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="init()">
+    <style>
+        .small-text{
+            font-size: small;
+        }
+        .big-text{
+            font-size: xx-large;
+        }
+        #box{
+            background-color: blueviolet;
+            width: 200px;
+            height: 100px;
+        }
+    </style>
+    <!-- id는 #target 하고 enter하면 자동입력 -->
+    <div id="targer" class="small-text">Hello</div>
+    <button onclick="changeStyle()">스타일 변경</button>
+    <button onclick="changeClass()">스타일 변경</button>
+    <button id="my_button">코드로 이벤트 연결</button>
+    <!-- ul>item*4(emmet) -->
+    <ul>
+        <li class="item"></li>
+        <li class="item"></li>
+        <li class="item"></li>
+        <li class="item"></li>
+    </ul>
+    <div id="box" onmouseover="onMouseOver()" onmouseleave="onMouseLeave()"></div>
+
+    <!-- script는 보통 맨 아래에 씀 -->
+    <script>
+         function onMouseOver() {
+            console.log('onMouseOver!!!');
+        }
+        function onMouseLeave() {
+            console.log('onMouseLeave!!!');
+        }
+        function init() {
+            console.log('init!!!');
+        }
+        let $button = document.getElementById('my_button');
+        $button.addEventListener('mouseover', function(){
+            console.log('click!!');
+        });
+        function changeStyle() {
+            let $target = document.getElementById('target');
+            $target.style.color = "yellow"
+            }
+        function changeClass() {
+        let $target = document.getElementById('target');
+        $target.className = 'big-text'
+        }
+
+        //Dom 객체에 접근($ 붙으면 dom 객체 라는 뜻)
+        let $target = document.getElementById('target');
+
+        // css의 셀렉터 그대로 활용할 수 있다.
+        // document.write('Hello World<br>');
+        // document.write('Hello World');
+        console.log('body 완료!!'); //body 가 끝나기전에 log 실행(위에 onload 사용함)
+
+    </script>
+</body>
+</html>
