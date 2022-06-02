@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습1_제이쿼리 활용</title>
+  <!-- jquery 쓰려면 CDN 코드 가져오기 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <style>
+    /*버튼 크기 지정 */
+    .button { 
+        width: 100px; 
+        height: 50px;
+      }
+    /*<button> 태그가 onclick 됐을 때 불러올 사항 */
+    .red { 
+      color: red;
+
+    }
+
+    .blue {
+      color: blue;
+    }
+
+    .green {
+      color: green;
+    }
+  </style>
+
+  <style>
+    .center {
+      text-align: center;
+    }
+
+    .invisible {
+      display: none;
+    }
+
+    .visible {
+      display: block;
+    }
+  </style>
+
+  <div class="center"> <!--div를 중앙에 정렬-->
+    <h1 id="text"></h1>
+    <div id="btn" class="invisible">
+        <!-- onclick Event 사용자가 요소를 클릭할 떄 발생 -->
+        <!-- 인수만 변경하여  요소의 색상을 변경할 수 있음-->
+      <button class = "button" onclick="changeColor('red')">빨강</button>
+      <button class = "button" onclick="changeColor('blue')">파랑</button>
+      <button class = "button" onclick="changeColor('green')">초록</button>
+      
+    </div>
+  </div>
+
+  <script>
+    let text = prompt('텍스트 값을 입력해 주세요.'); //사용자로부터 입력값 받기
+    if (text == '') { //입력값이 없을 경우
+      text = prompt('입력해주세요.'); //경고메시지 띄움
+    }
+    //사용자가 입력한 값을 화면에 띄우기
+    let $text = $('#text');
+    $text.text(text);
+
+    //엘리먼트 옵션 변경
+    //$(target).attr("바꿀옵션","값") //값 변경
+    let $btn = $('#btn');
+    $btn.attr('class', 'visible');
+    //changeColor 함수 호출할 시 띄울메세지
+    function changeColor(color) {
+      alert(`${color}색으로 변경됩니다.`);
+
+    //css변경 -> $(target).css("바꿀 css","값") //값 변경
+       $text.css('color', color);
+    }
+
+  </script>
+
+</body>
+
+</html>
