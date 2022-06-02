@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기사 등록</title>
+      <!-- jqeury 쓰려면 CDN 코드 가져오기 -->
+      <script src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"></script>
+</head>
+
+<body>
+    
+    <style>
+        #header{
+            background-color: #455C9F;
+            color: white;
+            padding: 10px;
+        }
+        .content{
+            padding: 10px;
+            background-color: #E6E7EA;
+        }
+        .item{
+            margin: 10px;
+            background-color: white;
+        }
+        .container{
+            width: 250px;
+        }
+    </style>
+    <div class="container">
+        <div id="header"><b>기사등록하기</b></div>
+        <div class="content">페이스북 색감따라하기
+        <div class="item"><b>박지성</b> SBS에서 월드컵보세요!</div>
+        <div class="item"><b>안정환</b> MBC죠</div>
+        <div class="item"><b>이영표</b> KBS는 수신료의 가치를..</div>
+    </div>
+</div>
+<button id = "btn_prompt">기사 등록하기</button>
+
+<script>
+    $('#btn_prompt').click(function () {
+      let text = prompt('기사내용');
+
+        $('.content').append(`<div class = "item">${text} </div>`);
+
+        });
+        
+</script>
+</body>
+</html>
