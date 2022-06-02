@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- jqeury 쓰려면 CDN 코드 가져오기 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <style>
+        #box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color:  skyblue;
+        }
+
+    </style>
+    <div id="box">
+
+    </div>
+    <script>
+    function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min; //최댓값도 포함, 최솟값도 포함
+    }
+        $('#box').click(function () {
+            //console.log('click!!'); //click이 잘 먹는지 콘솔로 확인
+            // $('#box').animate({left:'+=100px'}); 클릭시 계속 움직이기
+            $('#box').animate({ //크기변화주기
+                width: '150px', 
+                height: '100px'
+            });
+           
+        });
+    </script>
+    
+</body>
+</html>
