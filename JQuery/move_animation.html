@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <style>
+        #container {
+            position: absolute; /*이동 자유롭게하기위해*/
+            width: 400px;
+            height: 500px;
+            border: 1px pink solid;
+            left: 50px; /*가운데로 오게할것!!*/
+            top: 50px;
+        }
+        #dog {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            left: 100px;
+            border: 1px pink solid;
+        }
+    </style>
+
+
+
+    <div id="container">
+        <img id = "dog" src="../assets/iam.mp4.gif" alt="dog">
+        <!-- <img id = "dog" src="../assets/gom.gif" alt="dog"> -->
+    </div>
+    <script>
+        let dog = $('#dog');
+
+        const Game_width = 600;//게임의 사이즈
+        const Game_height = 600;
+
+        const MOVE = 25;
+        const dog_height = 100;
+        const dog_width = 100;
+
+
+        //$car.css({left:'+=25px'})
+        $('body').keydown(function (event) {
+          let top = Number(dog.css('top').replace('px', ''));
+          let bottom = top+dog_height;
+          let left = Number(dog.css('left').replace('px', ''));
+          let bottom = top+dog_height;
+
+        //   console.log(top);
+        
+            console.log(event.key); //방향키 쓰기
+            switch (event.key) {
+                case 'ArrowUp':
+                dog.css({top: '-=25px'});
+                    // console.log('위');
+                    break;
+                case 'ArrowDown':
+                dog.css({top: '+=25px'});
+                    // console.log('아래');
+                    break;
+                case 'ArrowLeft':
+                dog.css({left: '-=25px'});
+                    // console.log('왼');
+                    break;
+                case 'ArrowRight':
+                    if(right+MOVE > Game_width) {
+                        return;
+                    }
+                dog.css({left: '+=25px'});
+                    // console.log('오');
+                    break;
+            }
+
+        });
+    </script>
+</body>
+</html>
