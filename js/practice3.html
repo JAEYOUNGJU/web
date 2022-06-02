@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+
+    #box1{
+      border: 1;
+      background-color: skyblue;
+      color: white;
+      width: 300px;
+      height: 70px;
+      text-align: center;
+      line-height: 70px;
+      position: absolute;
+      border: 1px solid black;
+    }
+    #box2{
+      border: 1;
+      background-color: skyblue;
+      color: white;
+      width: 300px;
+      height: 70px;
+      text-align: center;
+      line-height: 70px;
+      position: absolute;
+      left: 300px;
+      border: 1px solid black;
+    }
+    #box3{
+      border: 1;
+      background-color: skyblue;
+      color: white;
+      width: 300px;
+      height: 70px;
+      text-align: center;
+      line-height: 70px;
+      position: absolute;
+      left: 600px;
+      border: 1px solid black;
+    }
+
+  </style>
+
+
+    <div id = "box1" onclick="changeStyle1()">html</div>
+    <div id = "box2" onclick="changeStyle2()">css</div>
+    <div id = "box3" onclick="changeStyle3()">javascript</div>
+
+  <script>
+    function changeStyle1(){
+      let $box1 = document.getElementById('box1');
+      $box1.style.color = "black";
+      $box1.style.backgroundColor = "white";
+
+      let $box2 = document.getElementById('box2');
+      $box2.style.color = "white";
+      $box2.style.backgroundColor = "skyblue";
+
+      let $box3 = document.getElementById('box3');
+      $box3.style.color = "white";
+      $box3.style.backgroundColor = "skyblue";
+
+    }
+
+    function changeStyle2(){
+      let $box2 = document.getElementById('box2');
+      $box2.style.color = "black";
+      $box2.style.backgroundColor = "white";
+
+      let $box1 = document.getElementById('box1');
+      $box1.style.color = "white";
+      $box1.style.backgroundColor = "skyblue";
+
+      let $box3 = document.getElementById('box3');
+      $box3.style.color = "white";
+      $box3.style.backgroundColor = "skyblue";
+    }
+
+    function changeStyle3(){
+      let $box3 = document.getElementById('box3');
+      $box3.style.color = "black";
+      $box3.style.backgroundColor = "white";
+
+      let $box1 = document.getElementById('box1');
+      $box1.style.color = "white";
+      $box1.style.backgroundColor = "skyblue";
+
+      let $box2 = document.getElementById('box2');
+      $box2.style.color = "white";
+      $box2.style.backgroundColor = "skyblue";
+    }
+    </script>
+    </body>
+    </html>
