@@ -1,0 +1,100 @@
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+      <style>
+          .big-text {
+              font-size:  xx-large;
+          }
+  
+          .color-red {
+              color: red;
+          }
+      </style>
+      <script>
+          //jquery 시작은 $ 로!
+          $(function() {
+            //onload 와 동일
+            console.log('onLoad');
+            //기존js 방식
+            $jsTitle = document.getElementById('title');
+            console.log($jsTitle);
+
+            //기존 이벤트 연결
+            document.getElementById('button1')
+                .addEventListener('click', function() {
+                console.log('클릭1!!');
+                });
+
+            // $ 변수이름 $id, jquery 방식, 객체를 따로만들고 리턴( 그 객체안에 정보가 들어있는 형태)
+            $title = $('#title');
+
+            console.log($title);
+            //제이쿼리 이벤트 아래 두개중 하나로 선택해서 사용할것
+            $('#button1').on('click', function () {
+                console.log(' jquery 클릭1!!');
+            });
+            $('#button1').click(function () {
+                console.log(' jquery(2) 클릭1!!');
+            });
+
+            //메서드 체인
+            $('#button2').click(function () {
+                console.log(' jquery(2) 클릭2!!');
+            }).mouseover(function () {
+                console.log(' jquery 마우스 오버 2');
+            }).mouseleave(function () {
+                console.log(' jquery 마우스 떠나기 2');
+            });
+           
+
+            $('#button3').click(function () {
+                //innerHTML, innerText에 대응
+                // $('#text').html('<b>b태그</b>');
+                $('#text').text('<b>b태그</b>');
+            });
+
+            $('#button4').click(function () {
+            //innerHTML, innerText에 대응
+                $('#text2').append('<b>b 태그</b>'); //append는 뒤에 붙음
+                .append('Hello');
+            });
+
+
+            $('#text3').mouseover(function() {
+                console.log(this); //자기자신, js로 얻었던 태그정보
+                console.log($(this)); //jquery 객체로 변경
+
+
+                // $('#text3')
+                // $(this) 이 둘의 차이는 있어보이게 하는것뿐..
+                // $(this).attr('class', 'color-red'); //속성변경
+                $(this).css('class', 'red'); //속성변경
+
+            });
+        });
+      </script>
+      <div id="title">title</div>
+      <button id="button1">클릭1</button>
+      <button id="button2">클릭2</button>
+
+
+      <div id="text">여기 </div>
+      <button id="button3">클릭3</button>
+
+      <div id="text2">여기 </div>
+      <button id="button4">클릭4</button>
+
+      <div id = "text3" class="big-text">big-text</div>
+  </body>
+  </html>
