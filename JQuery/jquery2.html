@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습2 체크박스</title>
+<!-- jqeury 쓰려면 CDN 코드 가져오기 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <style>
+        table, td, tr, th {
+            border: 1px black solid;
+        }
+        table { 
+            width: 400px;
+        }
+    </style>
+    <table>
+        <tr>
+            
+            <th><input type="checkbox" name="all" id="all" >확인
+
+            </th>
+            <th>제목</th>
+            <th>글쓴시간</th>
+        </tr>
+        <tr>
+            <!-- //checked 들어가면 checked된것만 골라라 -->
+            <td><input type="checkbox" name="chk" checked></td>
+            <td>1111</td>
+            <td>11:11:11</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="chk"></td>
+            <td>2222</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="chk"></td>
+            <td>3333</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="chk"></td>
+            <td>4444</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="chk"></td>
+            <td>555</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" name="chk"></td>
+            <td>66</td>
+            <td></td>
+        </tr>
+    </table>
+    <div id="log_button" type="button" value="로그"></div>
+    <script>
+        // $('#log_button').val() //벨류의 값쓰기
+        $('#log_button').click(function() {
+            // input태그 중에 checkbox 인것들 name이 chk 
+let $checkBoxes = $('input:chexkbox[name=chk]');
+console.log(`체크박스 수 : $ {checkBoxes.length}`);
+//ccheckd
+console.log('input:checkbox[name=chk]:checkbox').prop('checked', true);
+
+//체크된것이 있는지?
+if($('input:checkbox[name=chk]:checkbox').length > 0){
+
+}
+//내부순환
+$('input[name=chk]:checkbox').each(function () {
+    console.log('!!!');
+    console.log(this);
+   //console.log$($(this)); //jqeury 방식
+    this.checked = true;
+    //$(this).prop('checked', true);
+
+    if($(this).is(':checked')){}
+        });
+
+    </script>
+</body>
+</html>
