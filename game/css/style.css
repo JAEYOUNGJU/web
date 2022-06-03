@@ -1,0 +1,12 @@
+.container {
+    border: 1px black solid;
+    height: 90vh;
+    position: relative;
+}
+
+#mario {
+    width: 100px;
+    position: absolute;
+    bottom: 40px; /*바닥에 */
+    left: 20px;/*왼쪽에 뜨위기 */
+}
