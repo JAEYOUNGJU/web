@@ -17,12 +17,34 @@
 <body>
     <div class="container">
         <img id="mario" src = "assets/mario.gif" alt="mario">
+        <img id="goomba" src = "assets/goomba2.gif" alt="goomba">
     </div>
 
 
     <script>
 // 점프만들기
 let isJumping = false;
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
+}
+
+
+//goomba움직이게
+function goombaStart(){
+let speed = getRandomInt(1000, 2000); //1~2초사이 ,난이도ㅓ 조절해서ㅓ 해보기
+let respawnTime=getRandomInt(1000,2000);
+$('#goomba').animate({left:'-100px' },speed, function() {
+    //왼쪽꿑까지 가면 초기위치로 이동
+    $('#goomba').css('right', '50px').css('left', ''); //goomba 옮기기
+
+
+//다시 출발 
+setTimeout(goombaStart, respawnTime);
+});
+}
 
 function jump () {
     //연타방지
@@ -46,7 +68,7 @@ $('body').keydown(function (event){
     }
 })
 });
-
+goombaStart();
     </script>
 </body>
 

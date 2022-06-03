@@ -10,3 +10,9 @@
     bottom: 40px; /*바닥에 */
     left: 20px;/*왼쪽에 뜨위기 */
 }
+#goomba {
+    width: 100px;
+    position: absolute;
+    bottom: 50px;
+    right: 20px;/*왼쪽에 뜨위기 */
+}
