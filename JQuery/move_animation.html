@@ -49,31 +49,29 @@
         //$car.css({left:'+=25px'})
         $('body').keydown(function (event) {
           let top = Number(dog.css('top').replace('px', ''));
-          let bottom = top+dog_height;
+        //   let bottom = top+dog_height;
           let left = Number(dog.css('left').replace('px', ''));
-          let bottom = top+dog_height;
+        //   let bottom = top+dog_height;
 
-        //   console.log(top);
-        
             console.log(event.key); //방향키 쓰기
             switch (event.key) {
                 case 'ArrowUp':
-                dog.css({top: '-=25px'});
+                    dog.css({ top: '-=25px' });
                     // console.log('위');
                     break;
                 case 'ArrowDown':
-                dog.css({top: '+=25px'});
+                    dog.css({ top: '+=25px' });
                     // console.log('아래');
                     break;
                 case 'ArrowLeft':
-                dog.css({left: '-=25px'});
+                    dog.css({ left: '-=25px' });
                     // console.log('왼');
                     break;
                 case 'ArrowRight':
-                    if(right+MOVE > Game_width) {
-                        return;
-                    }
-                dog.css({left: '+=25px'});
+                    // if (right + MOVE > Game_width) {
+                    //     return;
+                    // }
+                    dog.css({ left: '+=25px' });
                     // console.log('오');
                     break;
             }
