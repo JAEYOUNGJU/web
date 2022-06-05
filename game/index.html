@@ -20,7 +20,7 @@
         <div class="background"></div>
         <div id="ingame">
         <img id="mario" src="assets/mario2.gif" alt="mario">
-        <img id="goomba" src="assets/goomba3.gif" alt="goomba">
+        <img id="goomba" src="assets/goomba2.gif" alt="goomba">
         <img id="killer" src="assets/killer3.gif" alt="killer">
         <div id="score">score: 0</div>
     </div>
@@ -37,11 +37,11 @@
 
 
     <script>
-        let isJumping = false; //기본값
-        let isGameover = false; //기본값
+        let isJumping = false; 
+        let isGameover = false; 
         let isGameStart = true; 
         let score = 0; //점수는 처음에 0점으로 시작
-        let isKillerStart = false; //기본값
+        let isKillerStart = false; 
         
         function showStart(isGameStart) {
             if (isGameStart == true) {
@@ -60,7 +60,7 @@
             let killerRight = Number($('#killer').css('left').replace('px', '')) + 100;
 
             if (isKillerStart && goombaLeft <= killerRight) {
-             score += 200;
+             score += 150;
 
                 setScore(score);
 
@@ -73,7 +73,7 @@
                 goombaInit();
 
                 //goomba 출현
-                setTimeout(goombaStart, getRandomInt(500, 1000));
+                setTimeout(goombaStart, getRandomInt(1000, 1000));
             }
         }
 
@@ -131,7 +131,7 @@
             let respawnTime = getRandomInt(1000, 2000);//1~2초사이
             $('#goomba').animate({ left: '-120px' }, speed, function () {
                 if (isGameover == false) {
-                    score += 100;
+                    score += 200;
                     setScore(score);
                 }
 
