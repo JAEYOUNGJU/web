@@ -1,169 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-     <!-- jquery 쓰려면 CDN 코드 가져오기 -->
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-  crossorigin="anonymous"></script>
+    <!-- jquery 쓰려면 CDN 코드 가져오기 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
-  <!-- 게임 껍데기 만들기 -->
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/script.js"></script>
+    <!-- 게임 껍데기 만들기 -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
 </head>
 
 <body>
     <div class="container">
         <div class="background"></div>
-        <!-- <div class="background" src = "assets/back4.webp"></div> -->
-        <img id="mario" src = "assets/mario.gif" alt="mario">
-        <img id="goomba" src = "assets/goomba3.gif" alt="goomba">
-        <img id="killer" src = "assets/killer3.gif" alt="killer">
-        <div class="score">점수: 0점</div>
+        <div id="ingame">
+        <img id="mario" src="assets/mario2.gif" alt="mario">
+        <img id="goomba" src="assets/goomba3.gif" alt="goomba">
+        <img id="killer" src="assets/killer3.gif" alt="killer">
+        <div id="score">score: 0</div>
+    </div>
+
+    <div id="start">MARIO GAME<br>
+        <button class="start_button">START</button>
+    </div>
+
+    <div id="gameover">
+        GAME OVER <br>
+        <button class="again_button">AGAIN?</button>
+      </div>
     </div>
 
 
     <script>
-// 점프만들기
-let isJumping = false;
-let isGameover = false;
-let score = 0; //점수 처음엔 0점
-let isKillerStart = false;
-
-function goombaDown() {
-let goombaLeft = Number($('#goomba').css('left').replace('px', ''));
-let killerRight = Number($('#killer').css('left').replace('px', ''))+100;
-
-if (isKiilerStart && goombaLeft <= killerRight) {
-    score += 200;
- 
-setScore(score);
-
-//goomba 없애고
-$('#goomba').stop().hide();
-goombaInit();
-
-//goomba 출현
-setTimeout(goombaStart, getRandomInt(5000, 2000));
-}
-}
-
-//마리오가 다운되는 조건
-function marioDown() {
-//둘이 부딫히면 죽어. 좌표를 알아야함
-// let marioLeft = Number($('#mario').css('left').replace('px', ''));고정이니까 필요없지
-if (isGameover){
-    return;
-}
-
-let marioRight = 140;
-let goombaLeft = Number($('#goomba').css('right').replace('px', ''));
-
-  if (goombaLeft <= marioRight && isJumping == false) { //점프가 아니면 
-    console.log('die');
-    // alert('gameover');
-    $('#goomba').stop();
-    isGameover = true;
-let goombaRight = goombaLeft+200; //고정이니까 필요없지
-}
-}
-
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
-}
-
-//killer 움직일때
-function killerStart() {
-    if (isKillerStart) { //킬러 출발하면 아무것도 안해 연타방지
-        return;
-    }
-
-//killer 발사
-    isKillerStart = true;
-    $('#killer').show().animate({left: '1000px'}, 1000, function() {
-        //원래 자리로 이동
-        killerInit();
-        isKillerStart = false;
-    });
-}
-function killerInit() {
-    $('#killer').css('left', '100px').stop().hide();
-}
-
-
-//     $('#killer').animate({left: '1000'}, 1000, function (){
-//         $('#killer').css('right', '220px');
-//         iskillerStart = false;
-//     });
-// }
-// $('#killer').css('right', '50px').css('left', ''); //goomba 옮기기
-
-
-//goomba움직이게
-function goombaStart(){
-let speed = getRandomInt(1000, 2000); //1~2초사이 ,난이도ㅓ 조절해서ㅓ 해보기
-let respawnTime=getRandomInt(1000,2000);//1~2초사이
-$('#goomba').animate({left:'-120px' },speed, function() {
-    if(isGameover == false){
-        score += 100;
-        setScore(score);
-    }
-
-    //왼쪽꿑까지 가면 초기위치로 이동
-    goombaInit();
-
-
-    //다시 출발 
-    setTimeout(goombaStart, respawnTime);
-    });
-}
- 
-    function setScore(score){
-        $('#score').text(`점수 : ${score}`);
+        let isJumping = false; //기본값
+        let isGameover = false; //기본값
+        let isGameStart = true; 
+        let score = 0; //점수는 처음에 0점으로 시작
+        let isKillerStart = false; //기본값
+        
+        function showStart(isGameStart) {
+            if (isGameStart == true) {
+                $('#start').show();
+                $('#ingame').hide();
+                $('#gameover').hide();
+            } else {
+                $('#start').hide();
+                $('#ingame').show();
+            }
         }
 
-    //끝까지 가면 초기위치로 이동
-    function goombaInit(){
-    $('#goomba').css('right', '-150px').css('left', '').show();
-    }
+        //goomba 죽음
+        function goombaDown() {
+            let goombaLeft = Number($('#goomba').css('left').replace('px', ''));
+            let killerRight = Number($('#killer').css('left').replace('px', '')) + 100;
 
-    function jump () {
-    //연타방지
-    if (isJumping) {
-        return;
-    }
-    //점프시작
-    isJumping = true;
-    $('#mario').animate({bottom: '+=200px'}, 'fast').animate({bottom:'-=200px'}, '1000',function() {
-        isJumping = false;
-    });
-}
+            if (isKillerStart && goombaLeft <= killerRight) {
+             score += 200;
 
-//onload
-$(function() {
-$('body').keydown(function (event) {
-    switch (event.key) {
-        case ' ':
-            jump();
-            // console.log('space');
-            break;
-        case 'Control':
-            killerStart();
-            break;
-    }
-});
+                setScore(score);
 
-//굼바 출발
-goombaStart();
-//충돌 체크
-setInterval(marioDown, 10); //1초에 60번
-//굼바 죽었다 체크
-setInterval(goombaDown, 10);
-});
+                // 킬러 원래자리로
+                killerInit();
+                isKillerStart = false;
+
+                //goomba 없애고
+                $('#goomba').stop().hide();
+                goombaInit();
+
+                //goomba 출현
+                setTimeout(goombaStart, getRandomInt(500, 1000));
+            }
+        }
+
+        //마리오가 다운되는 조건
+        function marioDown() {
+            //둘이 부딫히면 죽어. 좌표를 알아야함
+            // let marioLeft = Number($('#mario').css('left').replace('px', ''));고정이니까 필요없지
+            if (isGameover) {
+                return;
+            }
+
+            let marioRight = 120;
+            let goombaLeft = Number($('#goomba').css('left').replace('px', ''));
+
+            if (goombaLeft <= marioRight && isJumping == false) { //점프가 아니면 
+                console.log('die');
+                // alert('gameover');
+                $('#goomba').stop();
+                isGameover = true;
+                // let goombaRight = goombaLeft+200; //고정이니까 필요없지
+                $('#ingame').hide();
+                $('#gameover').show();
+
+                isGameStart = false;
+            }
+        }
+
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
+        }
+
+        //killer 움직일때
+        function killerStart() {
+            if (isKillerStart) { //킬러 출발하면 아무것도 안해 연타방지
+                return;
+            }
+
+            //killer 발사
+            isKillerStart = true;
+            $('#killer').show().animate({ left: '1000px' }, 1000, function () {
+                //원래 자리로 이동
+                killerInit();
+                isKillerStart = false;
+            });
+        }
+        function killerInit() {
+            $('#killer').css('left', '220px').stop().hide();
+        }
+
+        //goomba움직이게
+        function goombaStart() {
+            let speed = getRandomInt(1000, 2000); //1~2초사이 ,난이도ㅓ 조절해서ㅓ 해보기
+            let respawnTime = getRandomInt(1000, 2000);//1~2초사이
+            $('#goomba').animate({ left: '-120px' }, speed, function () {
+                if (isGameover == false) {
+                    score += 100;
+                    setScore(score);
+                }
+
+                //왼쪽꿑까지 가면 초기위치로 이동
+                goombaInit();
+
+
+                //다시 출발 
+                setTimeout(goombaStart, respawnTime);
+            });
+        }
+
+        function setScore(score) {
+            $('#score').text(`score : ${score}`);
+        }
+
+        //끝까지 가면 초기위치로 이동
+        function goombaInit() {
+            $('#goomba').css('right', '-150px').css('left', '').show();
+        }
+
+        function jump() {
+            //연타방지
+            if (isJumping) {
+                return;
+            }
+            //점프시작
+            isJumping = true;
+            $('#mario').animate({ bottom: '+=200px' }, 'fast').animate({ bottom: '-=200px' }, 1000, function () {
+                isJumping = false;
+            });
+        }
+
+        //onload
+        $(function () {
+            $('body').keydown(function (event) {
+                switch (event.key) {
+                    case ' ':
+                        jump();
+                        // console.log('space');
+                        break;
+                    case 'Control':
+                        killerStart();
+                        break;
+                }
+            });
+            showStart(isGameStart);
+            if($('.start_button').click(function() {
+                $('#start').hide();
+                $('#ingame').show();
+                //굼바 출발
+                goombaStart();
+            }))
+                    
+            //충돌 체크
+            setInterval(marioDown, 10);
+            //굼바 죽었다 체크
+            setInterval(goombaDown, 10);
+          
+            if ($('.again_button').click(function () {
+        location.reload();
+      }));
+        });
     </script>
 </body>
 
