@@ -23,10 +23,11 @@ body{
 }
 /* 사나운 거북이 */
 #goomba {
-    width: 200px;
+    width: 150px;
     position: absolute;
     bottom: 97px;
     right: 20px;/*오른쪽에 뜨위기 */
+    transform: scaleX(-1)
 }
 /* 불 */
 #killer {
