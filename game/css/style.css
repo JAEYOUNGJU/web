@@ -1,25 +1,29 @@
+
 body{
+    margin: 0px;
+    padding: 0px;
     /* 영역 벗어난 부분을 숨겨서 눈에 안 보이게함(스크롤 안 생김) */
     overflow-x: hidden; 
 }
 
 .container {
-    border: 1px black solid;
+    /* border: 1px black solid; */
     width: 1200px;
-    height: 90vh;
+    height: 600px;
     position: relative; 
 }
 
 #mario {
-    width: 120px;
+    width: 180px;
     position: absolute;
     bottom: 100px; /*바닥에 */
     left: 20px;/*왼쪽에 뜨위기 */
+    transform: scaleX(-1)
     /*마리오는 항상140*/
 }
 /* 사나운 거북이 */
 #goomba {
-    width: 120px;
+    width: 200px;
     position: absolute;
     bottom: 97px;
     right: 20px;/*오른쪽에 뜨위기 */
@@ -30,18 +34,54 @@ body{
     width: 80px;
     left: 120px;
     bottom: 100px;
-    transform: scaleX(-1); transition: .3s;
-     display: none; /*안보였다가 사용할때 나와야하니까 */
+    /* transform: scaleX(-1); transition: .3s; */
+    display: none; /*안보였다가 사용할때 나와야하니까 */
 }
 
 .background{
     position: absolute;
     background: url('../assets/back4.webp');
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
+    /* background-repeat: no-repeat;
+    background-size: cover; */
+    width: 200%;
     height:100%;
-    animation: slide 1s linear infinite; /*애니메이션에 이름을 지어하거나 지속시간, 속도 조절등을 지정할 수 있음*/
+    animation: slide 4s linear infinite; /*애니메이션에 이름을 지어하거나 지속시간, 속도 조절등을 지정할 수 있음*/
+}
+#start {
+    position: relative;
+    top:  100px;
+    padding:  2%;
+    text-align: center;
+    font-size: 80px;
+    color: aliceblue;
+    text-shadow: 5px 10px 10px black;
+}
+#score {
+    position: relative;
+    top: 50px;
+    padding: 2%;
+    font-size: 20px;
+    color: white;
+}
+button{
+    width: 400px;
+    border: 0;
+    background-color:transparent;
+    font-size: 40px;
+    color: navy;
+    text-shadow: 2px 3px 5px white;
+}
+#gameover {
+    position: relative;
+    top: 100px;
+    padding: 2%;
+    text-align: center;
+    font-size: 80px;
+    color: white;
+    text-shadow: 5px 10px 10px black;
+}
+#gameoverImg {
+    width: 200px;
 }
 /* 화면 이동이 자연스럽게 생성되도록 함 */
 @keyframes slide {
