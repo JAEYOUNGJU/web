@@ -80,7 +80,7 @@
         //마리오가 다운되는 조건
         function marioDown() {
             //둘이 부딫히면 죽어. 좌표를 알아야함
-            // let marioLeft = Number($('#mario').css('left').replace('px', ''));고정이니까 필요없지
+            // let marioLeft = Number($('#mario').css('left').replace('px', ''));고정이니까 필요없음
             if (isGameover) {
                 return;
             }
@@ -93,7 +93,7 @@
                 // alert('gameover');
                 $('#goomba').stop();
                 isGameover = true;
-                // let goombaRight = goombaLeft+200; //고정이니까 필요없지
+                // let goombaRight = goombaLeft+200; //고정이니까 필요없음
                 $('#ingame').hide();
                 $('#gameover').show();
 
@@ -127,7 +127,7 @@
 
         //goomba움직이게
         function goombaStart() {
-            let speed = getRandomInt(1000, 2000); //1~2초사이 ,난이도ㅓ 조절해서ㅓ 해보기
+            let speed = getRandomInt(1000, 2000); //1~2초사이 ,난이도 조절해서 해보기
             let respawnTime = getRandomInt(1000, 2000);//1~2초사이
             $('#goomba').animate({ left: '-120px' }, speed, function () {
                 if (isGameover == false) {
