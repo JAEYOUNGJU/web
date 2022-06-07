@@ -11,20 +11,26 @@
     <script>
         function loadDoc(){
             //비동기는 오래걸리는 동작
-            fetch('ajax_info.txt')
+            fetch('people.json')
             //promise 방식
             // .then(function(response{ -> 옛날방식
             //     return response.text();
             // }))
             //화살표 표기법(arrow function)
             //람다식 표현(lambda expression) 
-            .then(response => response.text()) //기다렸다가 여기서 처리
-            .then(text => { //.then을 써서 결과를 받음
-              document.getElementById('demo').innerHTML = text;
+            .then(response => response.json()) //기다렸다가 여기서 처리
+            .then(json => { //.then을 써서 결과를 받음
+                console.log(json);
+
+                let result = `${json.name} : ${json.age}`;
+
+              document.getElementById('demo').innerHTML = result;
+              document.getElementById('json').innerHTML = JSON.stringify(json);//json형태로 string바뀜
             });
         }
     </script>
     <div id="demo"></div>
+    <div id="json"></div>
     <button onclick="loadDoc()">get data</button>
 </body>
 </html>
