@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        function loadDoc(){
+            //비동기는 오래걸리는 동작
+            fetch('ajax_info.txt')
+            //promise 방식
+            // .then(function(response{ -> 옛날방식
+            //     return response.text();
+            // }))
+            //화살표 표기법(arrow function)
+            //람다식 표현(lambda expression) 
+            .then(response => response.text()) //기다렸다가 여기서 처리
+            .then(text => { //.then을 써서 결과를 받음
+              document.getElementById('demo').innerHTML = text;
+            });
+        }
+    </script>
+    <div id="demo"></div>
+    <button onclick="loadDoc()">get data</button>
+</body>
+</html>
