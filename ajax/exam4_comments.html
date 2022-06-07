@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+            <!-- jqeury 쓰려면 CDN 코드 가져오기 -->
+            <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <script>
+        $(function () {
+            const queryString = window.location.search; //url 뒤 ?부터 (ex: `?id=1`)
+            const urlParams = new URLSearchParams(queryString);
+            const id = urlParams.get('id');
+           
+           console.log(id);
+            loadData(id);
+        });
+    function loadData(id) {
+            fetch(`https://jsonplaceholder.typicode.com/comments?postId=${id}`)
+            .then(response => response.json())
+            .then(jsonArray => {
+                
+                
+                let $list = $('#list');//$붙이면 jquery 객체라는걸 뜻함
+                jsonArray.forEach((data, i)=>{
+                    $list.append(`<div class="card" onclick="moveCommentsPage(${data.id})"
+            <div class="container">
+              <h4><b>${data.title}</b></h4>
+              <p>${data.body}</p>
+            </div>
+          </div>`);
+                })
+                console.log(jsonArray);      
+         
+            });
+           
+        }
+
+    </script>
+    <h1>댓글</h1>
+    <ul id="list"> 
+    </ul>
+</body>
+</html>
