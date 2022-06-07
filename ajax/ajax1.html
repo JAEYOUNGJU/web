@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function loadDoc() {
+            //XMLHttpRequest 생성
+            var xhttp = new XMLHttpRequest();
+            //응답 왔을 때 콜백 함수 정의
+            xhttp.onreadystatechange = function() {
+                //this.readyState == 4 정상완료(응답이 왔으면)
+                //this.status == 200 서버 입장에서성공이라고 정함
+                 //this.status == 404 서버 입장에서 파일을 못 찾았다
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "ajax_info.txt", true);
+            xhttp.send();
+        }
+    </script>
+    <div id="demo"></div>
+    <button onclick="loadDoc()">get data</button>
+</body>
+</html>
