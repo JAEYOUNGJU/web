@@ -1,4 +1,4 @@
 #웹 수업
 - 홈페이지 :  https://jaeyoungju.github.io/web/
 
-C, Java, Linux, Github
+- 게임 : https://jaeyoungju.github.io/web/game/index.html
