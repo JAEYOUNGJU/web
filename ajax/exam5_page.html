@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- jqeury 쓰려면 CDN 코드 가져오기 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+    <style>
+        #movieClick {
+            width: 60%;
+            padding: 2%;
+            border: 5px rgb(86, 24, 231) solid;
+            border-radius: 5%;
+        }
+        #posterImg{
+            background-color: rgb(18, 19, 18);
+            width: 30%;
+        }
+        </style>
+</head>
+
+<body>
+    <script>
+        $(function () {
+            const queryString = window.location.search; //url 뒤 ?부터 (ex: `?id=1`)
+            const urlParams = new URLSearchParams(queryString);
+            const id = urlParams.get('id');
+           
+            loadData(id);
+        });
+    function loadData(id) {
+        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=a64533e7ece6c72731da47c9c8bc691f&language=ko-KR&page=1`)
+            .then(response => response.json())
+            .then(movie => {
+                $('#moviePage').append(`<table id = "movieClick">
+                    <tr>
+                        <td id="title" colspan="2"><h1><b>${movie.title}</b></h1></td>
+                        </tr>
+                        <td id="posterImg"><img src="https://image.tmdb.org/t/p/w500${movie.poster_path} " alt=""></td>
+                        <td>
+                            <div><b>개봉일</b> : ${movie.release_date}</div><br>
+                            <div><b> √ </b>: ${movie.vote_average}</div><br>
+                            <div> ♥ : ${movie.vote_count}</div><br>
+                            </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">${movie.overview}</td>
+                                    </tr>
+                                    </table>`);
+                                });
+                            }
+
+    </script>
+<div id="moviePage"></div>
+</body>
+</html>

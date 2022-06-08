@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+    <style>
+img {
+  box-shadow: 5px 5px 10px rgb(233, 230, 230);
+  padding: 15px;
+  border-radius:30px;
+  margin: 20px;
+}
+.movies{
+  display: inline-block;
+  width: 31vw; /*vw: 뷰포트 너비의 1% 길이와 동일*/
+  text-align: center;
+}
+    </style>
+</head>
+
+<body onload="loadData()">
+  <script>
+    //페이지 이동
+    function movePage(postId){
+      document.location.href=`exam5_page.html?id=${postId}`;
+    }
+
+    function loadData() {
+      //fetch 는 특정 url 로부터 정보를 비동기적으로 받아올 수 있음
+      fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=a64533e7ece6c72731da47c9c8bc691f&language=ko-KR&page=1')
+        .then(response => response.json())
+        .then(jsonArray => {
+          let $movie = $('#movie');//$붙이면 jquery 객체라는걸 뜻함
+         
+         
+          jsonArray.results.forEach((data, i) => {
+
+            $movie.append(`<div class="movies" onclick="movePage(${data.id})">
+              <img src="https://image.tmdb.org/t/p/w500${data.poster_path}" width=100% alt="">
+              <div class="movies"><b>${data.title}</b></div>`);
+            
+          });
+          
+        })
+    } 
+  </script>
+  <div id="movie"></div>
+  
+</body>
+
+</html>
