@@ -33,5 +33,14 @@ public class Word {
 		return ((String) letters.subSequence(i, i+1)).contains(vowel);
 			
 	}
-
+//i번째 글자가 자음인지 //a,e,i,o,u 아닌 나머지 if문 사용
+public boolean isConsonant(int i) {
+    //변수선언
+    String vowel = "aeiou";
+    boolean conso = true;
+    if (vowel.contains(letters.substring(i, i+1))) {
+        conso = false;
+    }
+    return conso;
+}
 }
