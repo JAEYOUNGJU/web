@@ -10,7 +10,6 @@ public class Algo1 {
        resolve();
         
     }
-    
     public static void resolve() {
     	Scanner scanner = new Scanner(System.in);
     	int num = scanner.nextInt();
