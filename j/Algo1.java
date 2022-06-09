@@ -7,13 +7,14 @@ public class Algo1 {
     // main하고 enter 하면 자동됨
     public static void main(String[] args) {
         //sout 하면 자동완성
-        System.out.println(resolve());
+       resolve();
         
     }
     
-    public static String resolve() {
+    public static void resolve() {
     	Scanner scanner = new Scanner(System.in);
     	int num = scanner.nextInt();
+        //nextLine으로 받으려고 한다면 사용하지 말것 enter을 먹기때문에
     	String[] arr = new String[num];
     	
     	for (int i = 0; i < num; i++) {
@@ -24,8 +25,7 @@ public class Algo1 {
     		System.out.print(arr[i]+",");
     	}
     	System.out.print(arr[(num-1)]+".");
-    	return "";
-    
-        
+
+
     }
 }
