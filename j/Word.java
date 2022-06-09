@@ -1,4 +1,4 @@
-package javaExam;
+package j;
 
 public class Word {
 
@@ -38,7 +38,7 @@ public boolean isConsonant(int i) {
     //변수선언
     String vowel = "aeiou";
     boolean conso = true;
-    if (vowel.contains(letters.substring(i, i+1))) {
+    if (vowel.contains(letters.substring(i, i + 1))) {
         conso = false;
     }
     return conso;
