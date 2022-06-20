@@ -3,4 +3,4 @@
 
 - 게임 : https://jaeyoungju.github.io/web/game/index.html
 
-- 영화 : http://127.0.0.1:5500/ajax/exam5.html
+- 영화 : http://jaeyoungju.github.io/web/ajax/exam5.html
