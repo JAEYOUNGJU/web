@@ -1,7 +1,8 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<%@ page contentType = "text/html; charset=utf-8"%>
-<%@ page import="java.sql.*,javax.sql.*, java.io.*"%>
-
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import = "java.util.Calendar" %>
 
 <html>
@@ -9,11 +10,12 @@
 <title>신규등록</title>
 <SCRIPT LANGUAGE="JavaScript">
 
-function submitForm(mode){
-	fm.action = "successPage.jsp";
-	fm.submit();
-}
-
+function submitForm(mode) {
+      fm.action = 'stock_write.jsp?key=INSERT';
+      fm.submit();
+    }
+  
+  
 function checkDouble(num) {
 var dotcheck = num;
 var isTrue = !dotcheck.includes(".");
@@ -22,16 +24,17 @@ return Boolean(isTrue);
 
 </SCRIPT>
 </head>
+<body>
+<div>
+<h3 align=center>(주)트와이스 재고 현황-상품등록</h3>
 <%
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/kopoctc", "root", "kopo40");
 	Statement stmt = conn.createStatement(); //객체생성
 	String today = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
 %>
-
-<h3 align=center>(주)트와이스 재고 현황-상품등록</h3>
-<body>
-<form method='post' action='successPage.jsp'>
+<div>
+<form method="post" name="fm" enctype="multipart/form-data">
 <table  border=1 cellspacing=0 cellpadding=5 align=center>
 
 <tr>
@@ -66,23 +69,24 @@ return Boolean(isTrue);
 
 <tr>
 <td><b>상품사진</b></td>
-<td width=480 height=200 colspan=3 align=left><input type='text' name="img" required>
-<input type='button' value='upload' onClick="submitForm('successPage')">
-
-</td>
+<td width=480 height=200 colspan=3><input type="file" name="upoladFile"></td>
 </tr>
-<table width=650 align=center>
-<tr>
-		<td width=600></td>
-		<td><input type=submit value="완료" onClick="submitForm('successPage')"></td>
-</tr>
+</table>
+</form>
+</div>
 <%
 stmt.close();
 conn.close();
 %>
+<div>
+<table width=700 align=center>
+<tr>
+		<td width=600></td>
+		<td><input type="button" value="완료" onClick="submitForm('write')"></td>
+</tr>
 </table>
-
-</FORM>
+</div>
+</div>
 
 </body>
 </html>

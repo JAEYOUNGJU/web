@@ -51,7 +51,7 @@
 		out.println("<td width=50><a href='stock_view.jsp?key=" + rset.getInt(1) + "'>" + rset.getInt(1) + "</a></td>");
 		out.println("<td width=70><a href='stock_view.jsp?key=" + rset.getInt(1) + "'>" + rset.getString(2) + "</a></td>");
 		out.println("<td width=70>" + rset.getInt(3) + "</td>");
-		out.println("<td width=70>" + rset.getString(4) + "</td>");
+		out.println("<td width=70>" + today + "</td>");
 		out.println("<td width=70>" + rset.getString(5) + "</td>");
 		out.println("</tr>");
 	}
@@ -128,7 +128,7 @@
 		</td>
 <!-- <div id="btn" align="right">-->
 <div class="btn">
-<td width="1050"><input align=center type=button OnClick="location.href='stock_insert.jsp'" value=신규등록></input></td>
+<td width="1050"><input align=center type=button OnClick="location.href='stock_insert.jsp'" value=신규등록></td>
 </tr>
 </div>
 </table>
