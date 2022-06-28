@@ -25,25 +25,15 @@
 <head>
 <title>상품상세</title>
 <SCRIPT LANGUAGE="JavaScript">
-<!--
-function submitForm(mode){
-	if(mode == 'write'){
-		fm.sction = "stock_write.jsp";
-	}else if(mode == "delete"){
-		fm.action = "stock_delete.jsp";
-	}
-	fm.submit();
-}
--->
 </SCRIPT>
 </head>
 <body>
 
-<div id="box">
+<div>
 <div>
 <h3 align=center>(주)트와이스 재고 현황-상품상세</h3>
-<table  border=1 cellspacing=0 cellpadding=5 align=center>
 
+<table  border=1 cellspacing=0 cellpadding=5 align=center>
 <tr>
 <td><b>상품 번호</b></td>
 <td width=480 colspan=3 align=left><input type='hidden' name="id" value=<%=id%>><%=id%></td>
@@ -91,11 +81,12 @@ conn.close();
 
 
 </table>
+
 <table width=590 align=center>
 
 <tr>
 		<td width=590></td>
-		<td><input type=button value="재고 수정" OnClick="alert(`수정할 수 없습니다.`)"></td>
+		<td><input type=button value="재고 수정" OnClick="location.href='stock_update.jsp?key=<%=id%>'"></td>
 		<td><input type=button value="상품 삭제" OnClick="location.href='stock_delete.jsp?key=<%=id%>'"></td>
 </tr>
 </table>

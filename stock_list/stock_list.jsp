@@ -4,30 +4,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>리스트</title>
+<title>재고현황 전체보기</title>
 </head>
 <body>
 <style>
 	#box{
 		text-align: center;
-		position: absolute;
-	}
-/*	#btn{
-		margin: 100px;
-		position: fixed;
-	}
-	*/
-	
-	.btn{
-	float:right;
-
+		justify-content: center;
+		display: flex;
+		align-items:center;
 	}
 </style>
 
 <div id="box">
-
-<div>
+<div class="center">
 <h3 align=center>(주)트와이스 재고 현황-전체현황</h3>
+
 <table cellspacing=1 width=800 border=1 align=center>
 <tr>
 <td width=100><p align=center>번호</p></td>
@@ -37,110 +29,91 @@
 <td width=150><p align=center>상품등록일</p></td> 
 </tr>
 
-<%
-	Class.forName("com.mysql.cj.jdbc.Driver"); 
-	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/kopoctc","root","kopo40");
-	Statement stmt =conn.createStatement();//Statement 객체 생성
-
-	String today = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
-	
-	ResultSet rset = stmt.executeQuery("select * from twiceStock as a limit 0,20;");
-	
-	while (rset.next()) {
-		out.println("<tr>");
-		out.println("<td width=50><a href='stock_view.jsp?key=" + rset.getInt(1) + "'>" + rset.getInt(1) + "</a></td>");
-		out.println("<td width=70><a href='stock_view.jsp?key=" + rset.getInt(1) + "'>" + rset.getString(2) + "</a></td>");
-		out.println("<td width=70>" + rset.getInt(3) + "</td>");
-		out.println("<td width=70>" + today + "</td>");
-		out.println("<td width=70>" + rset.getString(5) + "</td>");
-		out.println("</tr>");
-	}
-%>
-</table>
-
-<table>
-
-</table>
-
-<table>
-	<tr>
-		
-		<%
-		int count=0; //전체게시글 개수 세기
-		int totalPage=0;
-		int onePage=20; //한 페이지당 게시글  수-->
-		int currentPage=0; //현재 페이지 위치
-		double pageDiv=0; //몇 개의 페이지로 구성할 것인가
-		int page2=0;
-		
-		String ckey = "0";
-		int calc_key = Integer.parseInt(ckey);
-		
-		//select 문을 이용한 총 데이터 개수 출력
-		rset = stmt.executeQuery("select count(*) from twiceStock;");
-		while(rset.next()) {
-			count=rset.getInt(1);
-		}
-		pageDiv = (count/onePage); 
-		page2 = (count%onePage);
-
-		int max = (count/onePage)*onePage;
-
-		if(page2 == 0){
-			totalPage = (int) pageDiv;
-			max -= onePage;
-		}else{
-			totalPage = (int) (pageDiv+1);
-		}
-		
-		if (calc_key > max) {
-			calc_key = max;
-		}
-		int key_value = (calc_key/200) * 200;
-		int key_page = (key_value/200) * 10;
-		currentPage = (calc_key/onePage)+1;
-		
-		out.println("<p align=center><a href='stock_view.jsp?key=" + (key_value-onePage) + "'><font size='4'><b>&lt;</b></font></a>");
-		
-		if (count <= onePage) {
-			out.println("<a href='stock_view.jsp?key=" + key_value + "'><font size='3'><b>" + 1 +"</b></font></a>");
-		} else {
-			for (int i=1; i<11; i++) {
-				if ((key_page+i) > totalPage) {
-					break;
-				}
-				
-				if ((key_page+i) == (currentPage)) {
-					out.println("<a href='stock_view.jsp?key=" + key_value + "'><font size='4'><b>" + (key_page+i) +"</b></font></a>");
-				} else {
-					out.println("<a href='stock_view.jsp?key=" + key_value + "'><font size='4'><b>" + (key_page+i) +"</b></font></a>");
-				}
-				key_value += onePage;
-			}
-		}
-		
-		if (key_value >= max) {
-			out.println("<a href='stock_view.jsp?key=" + max + "'><font size='4'><b>&gt;</b></font></a>");
-		} else {
-			out.println("<a href='stock_view.jsp?key=" + (key_value) + "'><font size='4'><b>&gt;</b></font></a>");
-		}
+  <%
+			    String sql = "SELECT * FROM twiceStock as a limit 0,20;";
+			    Class.forName("com.mysql.cj.jdbc.Driver"); // 드라이버 로드
+			    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/kopoctc", "root", "kopo40");
+				Statement stmt = conn.createStatement();
+    	
+		    	ResultSet rs = stmt.executeQuery(sql);
+		    	
+					while (rs.next()) {
+						out.println("<tr>");
+						out.println("<td width=50><a href='stock_view.jsp?key=" + rs.getInt(1) + "'>" + rs.getInt(1) + "</a></td>");
+						out.println("<td width=70><a href='stock_view.jsp?key=" + rs.getInt(1) + "'>" + rs.getString(2) + "</a></td>");
+						out.println("<td width=70>" + rs.getInt(3) + "</td>");
+						out.println("<td width=70>" + rs.getString(4) + "</td>");
+						out.println("<td width=70>" + rs.getString(5) + "</td>");
+						out.println("</tr>");
+					}
+		    %>
+      </table>
+      <table class="regButton">
+		    <tr>
+		      <td width=550>
+		      <%
+			      String ckey = "0";
+						int calc_key = Integer.parseInt(ckey);
+						
+						int cnt=0, total_pages=0, posts_perPage=10, current_page=0;
+						double page_mod=0; int page_quo=0;
+						rs = stmt.executeQuery("select count(*) from twiceStock;");
+						while (rs.next()) {
+							cnt=rs.getInt(1);
+						}
+						page_quo = (cnt / posts_perPage);
+						page_mod = (cnt % posts_perPage);
+						
+						int maxKeyValue = (cnt/posts_perPage) * posts_perPage;
+						
+						if (page_mod == 0) {
+							total_pages = (int) page_quo;
+							maxKeyValue -= posts_perPage;
+						} else {
+							total_pages = (int) (page_quo + 1);
+						}
+						
+						 rs.close();
+						 stmt.close();
+						 conn.close();
+						if (calc_key > maxKeyValue) {
+							calc_key = maxKeyValue;
+						}
+						int key_value = (calc_key/100) * 100;
+						int key_page = (key_value/100) * 10;
+						current_page = (calc_key/posts_perPage)+1;
+						
+						out.println("<p align=center><a href='stock_list.jsp?key=" + (key_value-posts_perPage) + "'><font size='3'><b>&lt;</b></font></a>");
+						
+						if (cnt <= posts_perPage) {
+							out.println("<a href='stock_list.jsp?key=" + key_value + "'><font size='3'><b>" + 1 +"</b></font></a>");
+						} else {
+							for (int i=1; i<11; i++) {
+								if ((key_page+i) > total_pages) {
+									break;
+								}
+								
+								if ((key_page+i) == (current_page)) {
+									out.println("<a href='stock_list.jsp?key=" + key_value + "'><font size='3'><b>" + (key_page+i) +"</b></font></a>");
+								} else {
+									out.println("<a href='stock_list.jsp?key=" + key_value + "'><font size='3'><b>" + (key_page+i) +"</b></font></a>");
+								}
+								key_value += posts_perPage;
+							}
+						}
+						
+						if (key_value >= maxKeyValue) {
+							out.println("<a href='stock_list.jsp?key=" + maxKeyValue + "'><font size='3'><b>&gt;</b></font></a>");
+						} else {
+							out.println("<a href='stock_list.jsp?key=" + (key_value) + "'><font size='3'><b>&gt;</b></font></a>");
+						}
 		%>	
 		</td>
-<!-- <div id="btn" align="right">-->
-<div class="btn">
-<td width="1050"><input align=center type=button OnClick="location.href='stock_insert.jsp'" value=신규등록></td>
-</tr>
-</div>
+	</tr>
+	
+		<td width="1050"><input type=button OnClick="location.href='stock_insert.jsp'" value=신규등록></td>
 </table>
 </div>
 </div>
-<%
-rset.close();
-stmt.close();
-conn.close();
-%>
-
-
-</table>
 </html>
 </head>

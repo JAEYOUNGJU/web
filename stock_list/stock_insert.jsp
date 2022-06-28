@@ -21,7 +21,6 @@ var dotcheck = num;
 var isTrue = !dotcheck.includes(".");
 return Boolean(isTrue);
 }
-
 </SCRIPT>
 </head>
 <body>
