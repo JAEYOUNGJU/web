@@ -1,94 +1,76 @@
-<%@page import="java.util.Date"%>
+
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.sql.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*, javax.sql.*, java.io.*" %>
+<%@page import="java.util.Enumeration"%>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
+
 <%@ page import = "java.util.Calendar" %>
+<%@page import="java.util.Date"%>
+<%@ page errorPage="errorPage.jsp" %>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>신규등록</title>
-<SCRIPT LANGUAGE="JavaScript">
-
-function submitForm(){
-	fm.action ="stock_write.jsp?key=INSERT";
-	fm.submit();
-}
-  
-function checkDouble(num) {
-var dotcheck = num;
-var isTrue = !dotcheck.includes(".");
-return Boolean(isTrue);
-}
-
-</SCRIPT>
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-<div>
-<h3 align=center>(주)트와이스 재고 현황-상품등록</h3>
-<%
-	Class.forName("com.mysql.cj.jdbc.Driver");
+  <%
+  	request.setCharacterEncoding("UTF-8");
+  
+	Date nowTime = new Date();
+	SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+	Class.forName("com.mysql.cj.jdbc.Driver"); // 데이터베이스용 jar파일 사용
 	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/kopoctc", "root", "kopo40");
-	Statement stmt = conn.createStatement(); //객체생성
-	String today = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
-%>
-<div>
-<form method="post" name="fm" action="stock_write.jsp?key=INSERT">
-<table  border=1 cellspacing=0 cellpadding=5 align=center>
+	// database에 연결
+	Statement stmt = conn.createStatement(); // 연결된 데이터베이스에서 자료 가져오기
+	
+	String id = "";
+	String product = "";
+	String stockCount = "";
+	String detail = "";
+	String imageAdd = "";
 
-<tr>
-<td><b>상품 번호</b></td>
-<td width=480 colspan=3 align=left><input type='number' name="id" required></td>
-</tr>
-
-<tr>
-<td><b>상품명</b></td>
-<td width=480 colspan=3 align=left><input type='text' maxlength='3' name="product" required></td>
-</tr>
-
-<tr>
-<td><b>재고 현황</b></td>
-<td width=480 colspan=3 align=left><input type='number' name="stockCount" required></td>
-</tr>
-
-<tr>
-<td><b>상품등록일</b></td>
-<td width=480 colspan=3 align=left><input type='hidden' name="firstDate" value=<%=today%>><%=today%></td>
-</tr>
-
-<tr>
-<td><b>재고등록일</b></td>
-<td width=480 colspan=3 align=left><input type='hidden' name="finalDate" value=<%=today%>><%=today%></td>
-</tr>
-
-<tr>
-<td><b>상품설명</b></td>
-<td width=480 colspan=3 align=left><input type='text' name="detail" required></td>
-</tr>
-
-<tr>
-<td><b>상품사진</b></td>
-<td width=480 height=200 colspan=3><input type="file" name="upoladFile"></td>
-</tr>
-</table>
-</form>
-
-</div>
-<%
-stmt.close();
-conn.close();
-%>
-<div>
-<table width=700 align=center>
-<tr>
-		<td width=600></td>
-		<td><input type=submit value="완료"></td>
-</tr>
-</table>
-</div>
-</div>
-</form>
+   	int size = 1024 * 1024 * 20; // 20MB
+    String filename, original_filename;
+    String path = request.getRealPath("./image");
+    
+    MultipartRequest multiRequest = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
+    
+    id = multiRequest.getParameter("id");
+    stockCount = multiRequest.getParameter("stockCount");
+    product = multiRequest.getParameter("product");
+    detail = multiRequest.getParameter("detail");
+    
+    imageAdd = "";
+    Enumeration files = multiRequest.getFileNames();
+    String str = (String)files.nextElement();
+    filename = multiRequest.getFilesystemName(str);
+    original_filename = multiRequest.getOriginalFileName(str);
+    imageAdd = "image/" + filename;
+ 
+    String sql = "INSERT INTO twiceStock (id, product, stockCount, firstDate, finalDate, detail, img) VALUES (" + id + ", '" + product + "', " + multiRequest.getParameter("stockCount") + ", '"
+    + sf.format(nowTime) + "', '" + sf.format(nowTime) + "', '" + detail + "', '" + imageAdd + "');";
+    
+  /*   String sql = "INSERT INTO twiceStock VALUES (" + id + ", '" + product + "', " + stockCount + ", '" + sf.format(nowTime).replace("-","") + "', '" + sf.format(nowTime).replace("-","") + "', '" + detail + "', '" + imageAdd + "');"; */
+    
+    stmt.executeUpdate(sql);
+    
+    stmt.close();
+    conn.close();
+  %>
+  <table width="650">
+    <tr>
+      <td align="center"><h1>재고등록완료</h1></td>
+    </tr>
+    <tr>
+      <td align="center"><input type="button" value="재고현황" onclick="location.href='stock_list.jsp'"></td>
+    </tr>
+  </table>
 </body>
 </html>
-

@@ -6,15 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>재고현황/수정</title>
-<SCRIPT LANGUAGE="JavaScript">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>재고수정</title>
 
-function submitForm() {
-      fm.action = 'stock_write.jsp?';
-      fm.submit();
-    }
-
-</SCRIPT>
 </head>
 <body>
 
@@ -34,8 +29,8 @@ function submitForm() {
 		int stockCount = 0;
 		
 		
-		ResultSet rset = stmt.executeQuery("select * from twiceStock where id = " +id+ ";");
-		
+		ResultSet rset = stmt.executeQuery("select * from twiceStock where id = '" +id+ "';");
+
 		
 		while (rset.next()) {
 
@@ -49,6 +44,8 @@ function submitForm() {
 
 
 		%>
+
+
 <div id="box">
 <div>
 <h3 align=center>(주)트와이스 재고 현황-재고수정</h3>
@@ -89,7 +86,7 @@ function submitForm() {
 <tr>
 <td><b>상품사진</b></td>
 <td width=480 height=200 colspan=3 align=left>
-<img src=<%=img%> width="300px" height="220px"></td>
+<img src='<%=img%>' width="300px" height="220px"></td>
 </tr>
 </div>
 </div>
@@ -102,12 +99,22 @@ conn.close();
 %>
 </form>
 
+
+
+
 <table>
 <tr>
-		<td width=800></td>
+		<td width=660></td>
 		<td><input type=submit value="재고수정" OnClick="submitForm()"></td>
 </tr>
 </table>
+		<SCRIPT LANGUAGE="JavaScript">
+		function submitForm() {
+		      fm.action = 'stock_updateDB.jsp?key=<%=id%>';
+		      fm.submit();
+		    }
 
+
+</SCRIPT>
 </body>
 </html>

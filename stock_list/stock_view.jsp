@@ -26,6 +26,8 @@
 <title>상품상세</title>
 <SCRIPT LANGUAGE="JavaScript">
 </SCRIPT>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -74,9 +76,9 @@
 
 
 <%
-rset.close();	
-stmt.close();
-conn.close();
+rset.close(); //파일 내용 닫기
+stmt.close(); //파일 닫기
+conn.close(); //연결 닫기
 %>
 
 

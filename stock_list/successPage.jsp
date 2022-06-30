@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-<title>등록완료 페이지</title>
+<title>등록완료</title>
 </head>
 <body>
 

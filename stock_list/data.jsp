@@ -69,6 +69,26 @@ sql = "insert into twiceStock(id, product, stockCount, firstDate, finalDate, det
 stmt.execute(sql);
 sql = "insert into twiceStock(id, product, stockCount, firstDate, finalDate, detail, img) values(122141, '참외애', 15 , '2022-06-10', '2022-06-01', '알래스카산 바나나로 맘모스의 아침식사', '사진')";
 stmt.execute(sql);
+sql = "insert into twiceStock(id, product, stockCount, firstDate, finalDate, detail, img) values(122142, '바나나', 10 , '2022-06-10', '2022-06-01', '알래스카산 바나나로 맘모스의 아침식사', '사진')";
+stmt.execute(sql);
+sql = "insert into twiceStock(id, product, stockCount, firstDate, finalDate, detail, img) values(122143, '따알기', 10 , '2022-06-10', '2022-06-01', '알래스카산 바나나로 맘모스의 아침식사', '사진')";
+stmt.execute(sql);
+sql = "insert into twiceStock(id, product, stockCount, firstDate, finalDate, detail, img) values(122144, '사아과', 12 , '2022-06-10', '2022-06-01', '알래스카산 바나나로 맘모스의 아침식사', '사진')";
+stmt.execute(sql);
+sql = "insert into twiceStock(id, product, stockCount, firstDate, finalDate, detail, img) values(122145, '배애애', 14 , '2022-06-10', '2022-06-01', '알래스카산 바나나로 맘모스의 아침식사', '사진')";
+stmt.execute(sql);
+sql = "insert into twiceStock(id, product, stockCount, firstDate, finalDate, detail, img) values(122146, '참외애', 15 , '2022-06-10', '2022-06-01', '알래스카산 바나나로 맘모스의 아침식사', '사진')";
+stmt.execute(sql);
+sql = "insert into twiceStock(id, product, stockCount, firstDate, finalDate, detail, img) values(122147, '바나나', 10 , '2022-06-10', '2022-06-01', '알래스카산 바나나로 맘모스의 아침식사', '사진')";
+stmt.execute(sql);
+sql = "insert into twiceStock(id, product, stockCount, firstDate, finalDate, detail, img) values(122148, '따알기', 10 , '2022-06-10', '2022-06-01', '알래스카산 바나나로 맘모스의 아침식사', '사진')";
+stmt.execute(sql);
+sql = "insert into twiceStock(id, product, stockCount, firstDate, finalDate, detail, img) values(122149, '사아과', 12 , '2022-06-10', '2022-06-01', '알래스카산 바나나로 맘모스의 아침식사', '사진')";
+stmt.execute(sql);
+sql = "insert into twiceStock(id, product, stockCount, firstDate, finalDate, detail, img) values(122150, '배애애', 14 , '2022-06-10', '2022-06-01', '알래스카산 바나나로 맘모스의 아침식사', '사진')";
+stmt.execute(sql);
+sql = "insert into twiceStock(id, product, stockCount, firstDate, finalDate, detail, img) values(122151, '참외애', 15 , '2022-06-10', '2022-06-01', '알래스카산 바나나로 맘모스의 아침식사', '사진')";
+stmt.execute(sql);
 
 stmt.close();
 conn.close();

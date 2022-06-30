@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<title>삭제완료 페이지</title>
+<title>삭제완료</title>
 <SCRIPT LANGUAGE="JavaScript">
 
 </SCRIPT>

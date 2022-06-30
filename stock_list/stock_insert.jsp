@@ -1,27 +1,44 @@
 <%@page import="java.util.Date"%>
+<%@ page import = "java.util.Calendar" %>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.sql.*"%>
+<%@ page import="java.sql.*, javax.sql.*, java.io.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "java.util.Calendar" %>
 
+<%@ page errorPage="errorPage.jsp" %>
 <html>
 <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>신규등록</title>
+<style type = "text/css">
+
+  textarea {
+    resize: none;
+  }
+</style>
 <SCRIPT LANGUAGE="JavaScript">
 
-function submitForm(mode) {
-      fm.action = 'stock_write.jsp?key=INSERT';
-      fm.submit();
-    }
-  
-  
+function submitForm(){
+	document.fm.action ="stock_write.jsp";
+	fm.submit();
+}
+//특수문자 금지 (이름)
+function characterCheck(obj){
+var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi; 
+   if( regExp.test(obj.value) ){
+    alert("특수문자는 입력하실 수 없으셔요.");
+    obj.value = obj.value.substring( 0 , obj.value.length - 1 ); // 입력한 특수문자 한자리 지움
+   }
+}
 function checkDouble(num) {
 var dotcheck = num;
 var isTrue = !dotcheck.includes(".");
 return Boolean(isTrue);
 }
+
 </SCRIPT>
+
 </head>
 <body>
 <div>
@@ -33,6 +50,7 @@ return Boolean(isTrue);
 	String today = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
 %>
 <div>
+<!-- 파일 업로드 시 enctype 설정해야함 -->
 <form method="post" name="fm" enctype="multipart/form-data">
 <table  border=1 cellspacing=0 cellpadding=5 align=center>
 
@@ -48,7 +66,7 @@ return Boolean(isTrue);
 
 <tr>
 <td><b>재고 현황</b></td>
-<td width=480 colspan=3 align=left><input type='number' name="stockCount" required></td>
+<td width=480 colspan=3 align=left><input type='number' min='0' onkeydown="characterCheck(this)" name="stockCount" required></td>
 </tr>
 
 <tr>
@@ -63,30 +81,30 @@ return Boolean(isTrue);
 
 <tr>
 <td><b>상품설명</b></td>
-<td width=480 colspan=3 align=left><input type='text' name="detail" required></td>
-</tr>
+<%-- <td><textarea style="width:100%" name=detail required><%=detail%></textarea></td> --%>
+<td width=480 colspan=3 align=left><input type='text' maxlength="1000"name="detail" required></td>
 
 <tr>
 <td><b>상품사진</b></td>
-<td width=480 height=200 colspan=3><input type="file" name="upoladFile"></td>
+<td width=480 height=200 colspan=3><input type="file" name="photo" size="70" maxlength="70" required accept="images"></td>
 </tr>
 </table>
 </form>
+
 </div>
 <%
 stmt.close();
 conn.close();
 %>
-<div>
+
 <table width=700 align=center>
 <tr>
 		<td width=600></td>
-		<td><input type="button" value="완료" onClick="submitForm('write')"></td>
+		<td><input type=submit value="완료" OnClick="submitForm()"></td>
 </tr>
 </table>
-</div>
-</div>
 
+</div>
 </body>
 </html>
 
