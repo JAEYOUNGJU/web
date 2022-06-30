@@ -47,22 +47,10 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 <nav class="navbar navbar-dark bg-dark">
 
   <span class="navbar-brand mb-0 h1" ><b>★ 공지사항 리스트</b></span>
-
-   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">
-          <i class="fa fa-home"></i>
-          Home
-          <span class="sr-only">(current)</span>
-          </a>
-      </li>
-         </ul>
-         </div>
          
 </nav>
 
-<div id="container">
+<div id="container" style="display:block">
 
 <table table class="table table-striped table-bordered table-hover" cellspacing=1 width=300 border=3>
 <thead>
