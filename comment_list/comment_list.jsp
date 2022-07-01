@@ -68,7 +68,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 
 	/* 	ResultSet rset = stmt.executeQuery("select * from gongji_comment order by id desc;"); */
 	
-	ResultSet rset = stmt.executeQuery("select id, title, viewcnt, date from gongji_comment order by id desc, recnt asc;");
+	ResultSet rset = stmt.executeQuery("select id, title, viewcnt, date from gongji_comment order by rootid desc, recnt asc;");
 	
 	while(rset.next()){
 		int id = rset.getInt(1);
@@ -76,7 +76,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 <tr>
 <td align=center><%=id%></td><!-- 번호 -->
 <td><a href='comment_view.jsp?key=<%=id%>'><%=rset.getString(2)%></a></td><!-- 제목 -->
-<td align=center><%=rset.getString(3) %></td><!-- 조회수 -->
+<td align=center><%=rset.getInt(3) %></td><!-- 조회수 -->
 <td align=center><%=rset.getString(4) %></td><!-- 날짜 -->
 </tr>
 <%
