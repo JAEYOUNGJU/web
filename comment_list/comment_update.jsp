@@ -49,7 +49,7 @@ var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;
 	
 	int id = rset.getInt(1);
 	String title = rset.getString(2);
-	String content = rset.getString(4);
+	String content = rset.getString(5);
 	rset.close();
 	stmt.close();
 	conn.close();
@@ -71,7 +71,7 @@ var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;
 </tr>
 <tr>
 		<td><b>내용</b></td>
-		<td><textarea style='width:500px; height:250px; overflow-y:scroll' name=content cols=70 row=600 required><%=content%></textarea></td>
+		<td><textarea style='width:500px; height:250px; overflow-y:scroll' name=content cols=70 row=600 required><%=content %></textarea></td>
 </tr>
 </table>
 

@@ -107,9 +107,7 @@ rset.close();
 			<td width=480 colspan=3 align=left><input type='hidden'
 				name="click" value=<%=relevel%>><%=relevel%>
 				<center>
-					댓글내 순서<input type='number' name="recnt" maxlength="1"
-						value=<%=recnt%> readonly
-						style='font-size: 9pt; width: 2px margin:3px; padding: 2px; border: 1px solid #ccc;'>
+					댓글내 순서<input type='number' name="recnt" maxlength="1" value=<%=recnt%> readonly style='font-size: 9pt; width: 2px margin:3px; padding: 2px; border: 1px solid #ccc;'>
 				</center></td>
 		</tr>
 
