@@ -28,13 +28,16 @@ request.setCharacterEncoding("UTF-8");
 	String id = request.getParameter("id");
 	
 	String title = request.getParameter("title");
-	int viewcnt = 0;
 	String content = request.getParameter("content");
+
+	int viewcnt = 0;
 	String today = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
 
 	if (key.equals("INSERT")) {
-		sql = "insert into gongji_comment (title, date, content) " + "values ('" + title + "', '" + sf.format(nowTime)
-		+ "', '" + content + "');";
+	
+		
+		sql = "insert into gongji_comment (title, viewcnt, date, content, rootid, relevel, recnt) values ('" + title + "', 0 , date(now()), '" + content + "', 0, 0, 0);";
+		
 		stmt.executeUpdate(sql);
 		ResultSet rset = stmt.executeQuery("select max(id) from gongji_comment;");
 		int rootid = 0;
@@ -42,7 +45,7 @@ request.setCharacterEncoding("UTF-8");
 			rootid = rset.getInt(1);
 		}
 		rset.close();
-		stmt.executeUpdate("update gongji_comment set rootid =" + rootid + "where id =" + rootid + ";");
+		stmt.executeUpdate("update gongji_comment set rootid = " + rootid + " where id = " + rootid + ";");
 	} else if (key.equals("REINSERT")) {
 		String relevel = request.getParameter("relevel");
 		String rootid = request.getParameter("rootid");
@@ -51,20 +54,19 @@ request.setCharacterEncoding("UTF-8");
 		+ "', " + viewcnt + ", '" + today + "', '" + content + "', " + rootid + ", " + relevel + ", " + recnt + ");";
 		stmt.executeUpdate(sql);
 	} else {
-		sql = "update gongji_comment set title ='" + title + "', date = date(now()), content ='" + content + "' where id ="
-		+ id + ";";
-		stmt.executeUpdate(sql);
-
-		sql = "update gongji_comment set title ='" + title + "', date='" + today + "', content='" + content
-		+ "'  where id = " + id + " ;";
-		stmt.executeUpdate(sql);
+		
+		sql = "update gongji_comment set title ='" + title + "', date='" + today +"', content='"+content+"' where id = " + id + " ;";
+	 /* 	out.println(title);
+		out.println(content);
+		out.println(id); */
+		 
+	 	stmt.executeUpdate(sql);
 	}
-	out.println(id);
 	stmt.close();
 	conn.close();
 	%>
 	<script>
-		document.location.href = "./comment_list.jsp";
+		  document.location.href = "./comment_list.jsp";
 	</script>
 </body>
 <!--body끝-->

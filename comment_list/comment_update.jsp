@@ -40,16 +40,19 @@ var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/kopoctc", "root", "kopo40");
 	Statement stmt = conn.createStatement(); //객체생성
-	String id_gongji = request.getParameter("key");
-	ResultSet rset = stmt.executeQuery("select * from gongji_comment where id='"+id_gongji+"';");
+	String id = request.getParameter("key");
+	ResultSet rset = stmt.executeQuery("select * from gongji_comment where id = '" + id + "';");
 	
 	request.setCharacterEncoding("UTF-8"); // 한글 처리
 	rset.next();
 	String today = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
+	int ids = 0;
 	
-	int id = rset.getInt(1);
-	String title = rset.getString(2);
-	String content = rset.getString(5);
+	String title = "", content = "";
+
+	ids = rset.getInt(1);
+	title = rset.getString(2);
+	content = rset.getString(5);
 	rset.close();
 	stmt.close();
 	conn.close();
@@ -82,6 +85,12 @@ var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;
 		<td><input type=button class="btn btn-dark" value="취소" OnClick="window.location='comment_list.jsp'"></td>
 		<td><input type=button class="btn btn-dark" value="쓰기" onClick="submitForm()"></td>
 		<td><input type=button class="btn btn-dark" value="삭제" OnClick="location.href='comment_delete.jsp?key=<%=id%>'"></td>
+		<%
+		out.println(id);
+		out.println(title);
+		out.println(today);
+		out.println(content);
+		%>
 </tr>
 </table>
 </FORM>

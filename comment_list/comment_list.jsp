@@ -39,7 +39,7 @@
 }
 
 .table>tbody>tr>td {
-	text-align: center;
+	 /* text-align: center;  */
 }
 
 .table>tbody>tr>#title {
@@ -61,10 +61,10 @@
 			cellspacing=1 width=300 border=3>
 			<thead>
 				<tr>
-					<td width=10><p align=center>번호</p></td>
-					<td width=300><p align=center>제목</p></td>
-					<td width=50><p align=center>조회수</p></td>
-					<td width=50><p align=center>등록일</p></td>
+					<td width=10><p align=center><b>번호</b></p></td>
+					<td width=300><p align=center><b>제목</b></p></td>
+					<td width=50><p align=center><b>조회수</b></p></td>
+					<td width=50><p align=center><b>등록일</b></p></td>
 				</tr>
 			</thead>
 			<%
@@ -94,10 +94,10 @@
 				String sql2="";
 				
 				for (int i = 0; i < relevel; i++) {
-					sql1 += "-";
+					sql1 += " "+" <img src=arrow.png width=15px>"+" ";
 				}
 				if (today.equals(date) && relevel >= 1) {
-					sql2 = "[NEW]<img src=new.png width=20px>";
+					sql2 = " "+"<img src=newIcon.png width=15px>";
 				}
 				title = sql1 + title + sql2;
 				%>
