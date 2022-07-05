@@ -9,7 +9,7 @@
 
 <%@ page import = "java.util.Calendar" %>
 <%@page import="java.util.Date"%>
-<%@ page errorPage="errorPage.jsp" %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,13 +53,25 @@
     filename = multiRequest.getFilesystemName(str);
     original_filename = multiRequest.getOriginalFileName(str);
     imageAdd = "image/" + filename;
- 
+	
+    ResultSet rset = stmt.executeQuery("select id from twiceStock where id = '" +id+ "';");
+   
+    
+	if(rset.next()){
+		 if(id.equals(rset.getString("id"))){ 
+			out.println("<script>alert('이미 등록된 번호입니다.'); location.href='stock_insert.jsp';</script>");
+			out.flush();//백단 작업이 시작되기 전 화면 출력 내용이 8KB가 되지 않을 경우 out,flush() 함수를 사용해 로딩중이라는 표시를 하기위함
+		} else {
+			out.println("새로 발급할 번호입니다.");
+		}
+		
+	  }
     String sql = "INSERT INTO twiceStock (id, product, stockCount, firstDate, finalDate, detail, img) VALUES (" + id + ", '" + product + "', " + multiRequest.getParameter("stockCount") + ", '"
     + sf.format(nowTime) + "', '" + sf.format(nowTime) + "', '" + detail + "', '" + imageAdd + "');";
     
   /*   String sql = "INSERT INTO twiceStock VALUES (" + id + ", '" + product + "', " + stockCount + ", '" + sf.format(nowTime).replace("-","") + "', '" + sf.format(nowTime).replace("-","") + "', '" + detail + "', '" + imageAdd + "');"; */
     
-    stmt.executeUpdate(sql);
+    stmt.executeUpdate(sql); 
     
     stmt.close();
     conn.close();

@@ -46,7 +46,7 @@
 		%>
 
 
-<div id="box">
+<div>
 <div>
 <h3 align=center>(주)트와이스 재고 현황-재고수정</h3>
 
@@ -99,12 +99,12 @@ conn.close();
 %>
 </form>
 
+</table>
 
 
-
-<table>
+<table align=center>
 <tr>
-		<td width=660></td>
+		<td width=500></td>
 		<td><input type=submit value="재고수정" OnClick="submitForm()"></td>
 </tr>
 </table>
