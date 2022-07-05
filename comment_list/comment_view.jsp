@@ -57,7 +57,7 @@ rset.close();
 			fm.action = "comment_write.jsp";
 		} else if (mode == "delete") {
 			fm.action = "comment_delete.jsp";
-		}
+		} 
 		fm.submit();
 	}
 </SCRIPT>

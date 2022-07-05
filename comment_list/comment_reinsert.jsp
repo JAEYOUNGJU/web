@@ -33,7 +33,7 @@
 	while (rset.next()) {
 		rootid = rset.getInt(6);
 		relevel = rset.getInt(7) + 1;
-		recnt = rset.getInt(8) + 1;
+		recnt = rset.getInt(8);
 	}
 	rset.close(); // 파일 내용 닫기
 	stmt.close(); // 파일 닫기
@@ -43,7 +43,7 @@
 		<table class="table" width="650" border="1" cellspacing="0" cellpadding="5">
 			<tr>
 				<td width="100"><b>번호</b></td>
-				<td>댓글(INSERT)<input type="hidden" name="id" value="INSERT"></td>
+				<td>댓글(INSERT)<input type="hidden" name="id" value="<%=id%>"></td>
 			</tr>
 			<tr>
 				<td><b>제목</b></td>
@@ -69,9 +69,18 @@
 				<td><input type="text" name="relevel" value="<%=relevel%>"
 					readonly> <b>댓글내 순서 </b><input type="text"
 					value="<%=recnt%>" name="recnt" readonly
-					style="width: 50px; border-color: darkblue;"></td>
+					style="width: 50px; border-color: rgb(4, 4, 19);"></td>
 			</tr>
 		</table>
+		
+		<%
+		out.println(id);
+		out.println(rootid);
+		out.println(relevel);
+		
+		%>
+		
+		
 		<div class="float-right">
 		<table class="btn" width="650">
 			<tr>
