@@ -5,7 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page errorPage="errorPage.jsp" %>
+<%-- <%@ page errorPage="errorPage.jsp" %> --%>
 <html>
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,6 +48,10 @@ return Boolean(isTrue);
 	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/kopoctc", "root", "kopo40");
 	Statement stmt = conn.createStatement(); //객체생성
 	String today = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
+	
+	String id = request.getParameter("key"); //http 요청의 파라미터 값을 얻기 위해 request.getParameter() 사용
+
+	
 %>
 <div>
 <!-- 파일 업로드 시 enctype 설정해야함 -->
@@ -86,7 +90,7 @@ return Boolean(isTrue);
 
 <tr>
 <td><b>상품사진</b></td>
-<td width=480 height=200 colspan=3><input type="file" name="photo" size="70" maxlength="70" required accept="images"></td>
+<td width=480 height=200 colspan=3><input type="file" required name="photo" size="70" maxlength="70" accept="images"></td>
 </tr>
 </table>
 </form>
