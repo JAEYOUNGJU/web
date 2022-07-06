@@ -9,7 +9,7 @@
 <%
 	Class.forName("com.mysql.jdbc.Driver");
 	Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/kopoctc","root","kopo40"); 
-	Statement stmt = conn.createStatement(); 
+	Statement stmt = conn.createStatement();
 %>
 <%
 try{
@@ -20,10 +20,13 @@ try{
 	out.println(e.toString());
 }
 %>
-<% //stmt.execute("create table gingji(id int not null primary key auto_increment,title varchar(70),date date,content text); 
+
+<% 
+   stmt.execute("create table gongji (id int not null primary key auto_increment,title varchar(70), date date, content text)DEFAULT CHARSET = utf8"); 
 %>
 
 <%
+   
 	String sql="";
 	sql="insert into gongji(title, date, content) values('공지사항1',date(now()),'공지사항내용1')"; stmt.execute(sql);
 	sql="insert into gongji(title, date, content) values('공지사항2',date(now()),'공지사항내용2')"; stmt.execute(sql);
@@ -35,3 +38,4 @@ conn.close();
 %>
 </body>
 </html>
+
