@@ -69,7 +69,7 @@
 				<td><input type="text" name="relevel" value="<%=relevel%>"
 					readonly> <b>댓글내 순서 </b><input type="text"
 					value="<%=recnt%>" name="recnt" readonly
-					style="width: 50px; border-color: rgb(4, 4, 19);"></td>
+					style="width: 50px; border-color: black;"></td>
 			</tr>
 		</table>
 		

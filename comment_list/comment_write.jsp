@@ -103,6 +103,7 @@ request.setCharacterEncoding("UTF-8");
 		    pstmt.setInt(6, recnt);
 		    pstmt.executeUpdate();
  
+
 		    // 자동부여된 ID 조회
 		    String query4 = "select id from gongji_comment order by id desc limit 1";
 		    pstmt = conn.prepareStatement(query4);

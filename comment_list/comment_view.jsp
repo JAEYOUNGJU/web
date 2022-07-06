@@ -20,7 +20,7 @@ stmt.executeUpdate("update gongji_comment set viewcnt = " + viewcnt + " where id
 
 ResultSet rset = stmt.executeQuery("select * from gongji_comment where id = " + id + ";");
 rset.next();
-
+int recnt=0;
 Integer id_comment = rset.getInt(1);//번호
 String title = rset.getString(2); //제목
 /* viewcnt = rset.getInt(3); //조회수 */
@@ -28,7 +28,7 @@ String today = new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util
 String content = rset.getString(5); //내용
 int rootid = rset.getInt(6); //원글
 int relevel = rset.getInt(7); //댓글수준
-int recnt = rset.getInt(8); //댓글 내 순서
+recnt = rset.getInt(8); //댓글 내 순서
 rset.close();
 %>
 

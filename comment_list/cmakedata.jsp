@@ -33,15 +33,15 @@ try {
 
 
 
-sql = "insert into gongji_comment(title, viewcnt, date, content, rootid, relevel, recnt) values('공지사항1', 0 , '2022-07-01', '내용1', 1 , 0, 1);";
+sql = "insert into gongji_comment(title, viewcnt, date, content, rootid, relevel, recnt) values('이용후기1', 0 , '2022-07-01', '내용1', 1 , 0, 0);";
 stmt.execute(sql);
-sql = "insert into gongji_comment(title, viewcnt, date, content, rootid, relevel, recnt) values('공지사항2', 0 , date(now()), '내용2', 2 , 0, 1);";
+sql = "insert into gongji_comment(title, viewcnt, date, content, rootid, relevel, recnt) values('이용후기2', 0 , date(now()), '내용2', 2 , 0, 0);";
 stmt.execute(sql);
-sql = "insert into gongji_comment(title, viewcnt, date, content, rootid, relevel, recnt) values('공지사항3', 0 , date(now()), '내용3', 3 , 0, 1);";
+sql = "insert into gongji_comment(title, viewcnt, date, content, rootid, relevel, recnt) values('이용후기3', 0 , date(now()), '내용3', 3 , 0, 0);";
 stmt.execute(sql);
-sql = "insert into gongji_comment(title, viewcnt, date, content, rootid, relevel, recnt) values('공지사항4', 0 , date(now()), '내용4', 4 , 0, 1);";
+sql = "insert into gongji_comment(title, viewcnt, date, content, rootid, relevel, recnt) values('이용후기4', 0 , date(now()), '내용4', 4 , 0, 0);";
 stmt.execute(sql);
-sql = "insert into gongji_comment(title, viewcnt, date, content, rootid, relevel, recnt) values('공지사항5', 0 , date(now()), '내용5', 5 , 0, 1);";
+sql = "insert into gongji_comment(title, viewcnt, date, content, rootid, relevel, recnt) values('이용후기5', 0 , date(now()), '내용5', 5 , 0, 0);";
 stmt.execute(sql);
 
 stmt.close();
