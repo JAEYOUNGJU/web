@@ -19,8 +19,6 @@
 	String id = request.getParameter( "key" );	
 	String product = "";
 	String imgFile= "";
-
-	
 	
 	ResultSet rset = stmt.executeQuery("select * from twiceStock where id = " +id+ ";");
 	while(rset.next()){
