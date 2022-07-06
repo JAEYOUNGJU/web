@@ -11,25 +11,16 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
   <style type="text/css">
-    td { font-size: 12; text-align : center; color: aliceblue;}
-    a:link {
-    
-      text-decoration: none;
+    td {text-align: center; color: #f5f4f2;} /*기본컬러: 흰색*/
+ 	a:link {text-decoration: none; color: #f5f4f2;} /*한번도 방문한 적 없는 상태.기본설정.흰색으로 통일*/
+    a:visited {text-decoration: none; color: #f5f4f2;} /*한번이라도 방문한 적 있는 상태.기본값에 따르기*/
+    a:hover {text-decoration: none; color: #ff9900;} /*링크 위에 마우스 올려놓은 상태. onmouseover와 동일한 컬러 사용*/
+    a:active {text-decoration: none; color: #ff9900;} /*링크를 마우스로 누르고 있는 상태. nmouseover와 동일한 컬러 사용*/
 
-    }
-    a:visited {
-   
-      text-decoration: none;}
-    a:hover {
-    
-      text-decoration: none;}
-    a:active {
-     
-      text-decoration: none;}
-    .m0{
-      color: aliceblue;
-    }
-  </style>
+html{
+font-size:10px;
+}
+    </style>
   <script language = 'javascript' type="text/javascript">
     var muCnt = 5;
     function fncShow(pos){
@@ -40,7 +31,7 @@
         if(i == pos){
           obj.style.display = "";
           obj2.style.color = "#f0f1f2";
-        } else{
+        } else {
           obj.style.display = 'none';
           obj2.style.color = "#6cd3e6";
         }
@@ -51,119 +42,140 @@ var obj = document.getElementById("menu"+pos);
 obj.style.display = 'none';
 }
 </script>
-</head>
 
 
 
-<body><nav class="navbar navbar-dark bg-dark">
-    <!-- Navbar content -->
-
-    
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" style="font-size:9px; height:100px;">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="//codeply.com"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" href="#">
 <center>
-<table cellpadding='0' cellspacing='1' border='0' width='750'>
-<td width='150'><a href='main.html target=main><img src="p.jpg" width='140' height='50' border='0'></a>
+<table cellpadding='0' cellspacing='1' border='0' width='750' style="padding: 10pxr">
+<td width='175'>
+<a href='main.html' target=main><img src="image/resort.png" width='90' height='80' border='0'>
+</a>
+
 </td>
 
 <td>
-<table cellpadding='0' cellspacing='1' border='0' width='600' height='60'>
-<tr height="30">
-<td>  <img src="image/smile2.png" width="20px" height="20px" alt=""></td>
-<td width="100" onmouseover="fncShow(0);" id="m0"><b> 리조트소개</b></td>
+<table cellpadding='0' cellspacing='1' border='0' width='500'>
+<tr height="10">
+<td>
+<td width="100" onmouseover="fncShow(0);" id="m0"><b> 해피 리조트</b></td>
 <td width="100" onmouseover="fncShow(1);" id="m1"><b> 찾아오기</b></td>
 <td width="100" onmouseover="fncShow(2);" id="m2"><b> 주변여행지</b></td>
 <td width="100" onmouseover="fncShow(3);" id="m3"><b> 예약하기</b></td>
 <td width="100" onmouseover="fncShow(4);" id="m4"><b> 리조트소식</b></td>
 <td width="100"></td>
 </tr>
-<tr height="30">
-<td colspan='6'>
-<table id= 'menu0' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='600' height='30'>
+<tr height="10">
+<!-- <td colspan='6'> -->
+<table id= 'menu0' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='600' height='5'>
 <tr>
 <td width='0'></td>
 <td width='600' style='text-align:left;'>
 <a href='main.html' target=main>
-<span onmouseover=this.style.color='#fefffa' onmouseout=this.style.color='#f0f1f2'>| 해피 리조트</span>
+<span onmouseover=this.style.color='#ff9900' onmouseout=this.style.color='#f5f4f2'>| 리조트 소개</span>
 </a>
 <a href='a_01.html' target=main>
-<span onmouseover=this.style.color='#fefffa' onmouseout=this.style.color='#f0f1f2'>| VIP룸</span>
+<span onmouseover=this.style.color='#ff9900' onmouseout=this.style.color='#f5f4f2'>| VIP룸</span>
 </a>
 <a href='a_02.html' target=main>
-<span onmouseover=this.style.color='#fefffa' onmouseout=this.style.color='#f0f1f2'>| 디럭스룸</span>
+<span onmouseover=this.style.color='#ff9900' onmouseout=this.style.color='#f5f4f2'>| 디럭스룸</span>
 </a>
 <a href='a_03.html' target=main>
-<span onmouseover=this.style.color='#fefffa' onmouseout=this.style.color='#f0f1f2'>| 힐링룸 |</span>
+<span onmouseover=this.style.color='#ff9900' onmouseout=this.style.color='#f5f4f2'>| 힐링룸 |</span>
 </a>
-</td>
+<!-- </td> -->
 </tr>
 </table>
 
 
 
-<table id= 'menu1' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='600' height='30'>
+<table id= 'menu1' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='600' height='5'>
 <tr>
 <td width='100'></td>
 <td width='500' style='text-align:left;'>
 <a href='b_01.html' target=main>
-<span onmouseover=this.style.color='#fefffa' onmouseout=this.style.color='#f0f1f2'>| 찾아오는길</span>
+<span onmouseover=this.style.color='#ff9900' onmouseout=this.style.color='#f5f4f2'>| 찾아오는길</span>
 </a>
 <a href='b_02.html' target=main>
-<span onmouseover=this.style.color='#fefffa' onmouseout=this.style.color='#f0f1f2'>| 대중교통이용</span>
+<span onmouseover=this.style.color='#ff9900' onmouseout=this.style.color='#f5f4f2'>| 대중교통이용</span>
 </a>
 <a href='b_03.html' target=main>
-<span onmouseover=this.style.color='#fefffa' onmouseout=this.style.color='#f0f1f2'>| 자가용이용 |</span>
+<span onmouseover=this.style.color='#ff9900' onmouseout=this.style.color='#f5f4f2'>| 자가용이용 |</span>
 </a>
 </td>
 </tr>
 </table>
 
 
-<table id= 'menu2' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='600' height='30'>
+<table id= 'menu2' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='600' height='5'>
 <tr>
 <td width='200'></td>
 <td width='400' style='text-align:left;'>
 <a href='c_01.html' target=main>
-<span onmouseover=this.style.color='#fefffa' onmouseout=this.style.color='#f0f1f2'>| 산책코스</span>
+<span onmouseover=this.style.color='#ff9900' onmouseout=this.style.color='#f5f4f2'>| 산책코스</span>
 </a>
 <a href='c_02.html' target=main>
-<span onmouseover=this.style.color='#fefffa' onmouseout=this.style.color='#f0f1f2'>| 인피니티풀</span>
+<span onmouseover=this.style.color='#ff9900' onmouseout=this.style.color='#f5f4f2'>| 인피니티풀</span>
 </a>
 <a href='c_03.html' target=main>
-<span onmouseover=this.style.color='#fefffa' onmouseout=this.style.color='#f0f1f2'>| 아뜨스파 |</span>
+<span onmouseover=this.style.color='#ff9900' onmouseout=this.style.color='#f5f4f2'>| 아뜨스파 |</span>
 </a>
 </td>
 </tr>
 </table>
 
-<table id= 'menu3' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='600' height='30'>
+<table id= 'menu3' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='600' height='5'>
 <tr>
 <td width='200'></td>
 <td width='400' style='text-align:left;'>
-<a href='d_01.html' target=main>
-<span onmouseover=this.style.color='#fefffa' onmouseout=this.style.color='#f0f1f2'>| 예약상황</span>
+<a href='d_01.jsp' target=main>
+<span onmouseover=this.style.color='#ff9900' onmouseout=this.style.color='#f5f4f2'>| 예약상황</span>
 </a>
-<a href='d_02.html' target=main>
-<span onmouseover=this.style.color='#fefffa' onmouseout=this.style.color='#f0f1f2'>| 예약하기</span>
+<a href='d_02.jsp' target=main>
+<span onmouseover=this.style.color='#ff9900' onmouseout=this.style.color='#f5f4f2'>| 예약하기</span>
 </a>
 <a href='adm_allview.jsp' target=main>
-<span onmouseover=this.style.color='#fefffa' onmouseout=this.style.color='#f0f1f2'>| 관리자페이지</span>
+<span onmouseover=this.style.color='#ff9900' onmouseout=this.style.color='#f5f4f2'>| 관리자페이지</span>
 </a>
 
-<a href='logout.jsp' target=main>
-<span onmouseover=this.style.color='#fefffa' onmouseout=this.style.color='#f0f1f2'>| 관리자로그아웃 |</span>
+<a href='adm_logout.jsp' target=main>
+<span onmouseover=this.style.color='#ff9900' onmouseout=this.style.color='#f5f4f2'>| 관리자로그아웃 |</span>
 </a>
 </td>
 </tr>
 </table>
 
-<table id= 'menu4' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='600' height='30'>
+<table id= 'menu4' style='display:none;' cellpadding='0' cellspacing='0' border='0' width='600' height='5'>
 <tr>
 <td width='350'></td>
 <td width='250' style='text-align:left;'>
 <a href='e_01.jsp' target=main>
-<span onmouseover=this.style.color='#fefffa' onmouseout=this.style.color='#f0f1f2'>| 리조트소식</span>
+<span onmouseover=this.style.color='#ff9900' onmouseout=this.style.color='#f5f4f2'>| 리조트소식</span>
 </a>
-<a href='e_02.html' target=main>
-<span onmouseover=this.style.color='#fefffa' onmouseout=this.style.color='#f0f1f2'>| 이용후기 |</span>
+<a href='e_02.jsp' target=main>
+<span onmouseover=this.style.color='#ff9900' onmouseout=this.style.color='#f5f4f2'>| 이용후기 |</span>
 </a>
 </td>
 </tr>
@@ -171,7 +183,25 @@ obj.style.display = 'none';
 </td>
 </tr>
 </table>
-</nav>
+
+
+
 
 <td></table></center>
+</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">help</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+        </ul>
+    </div>
+</nav>
 </body></html>

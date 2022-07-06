@@ -1,12 +1,17 @@
 <html> <!--웹 페이지는 <html>로 시작해서 </html>로 끝남-->
 <head> <!--웹 페이지의 정보, 문서에서 사용할 외부 파일들을 링크할 때 사용, <title>, <meta>등이 들어감-->
+  <title>리조트 홈페이지</title>
 <meta charset="utf-8" /><!--html 파일의 인코딩을 알려주는 태그로 브라우저에서 text를 어떻게 그려달라는지 말해주는것-->
 <!--브라우저 창을 여러 부분으로 나누어(화면 분할), 각 영역에 다른 html 문서를 삽입할 수 있음-->
-<frameset rows="25%,*" frameorder="0" border="0" frameborder="0">
-<frame src="top.html" frameborder="no"border="0" framespacing="0" scrolling="no" marginwidth="10" ><!--어떤 문서를 프레임 안으로 불러올것인가 지정-->
-<frame src="main.html" name=main scrolling="auto"  marginwidth="10"  marginheight="10">
+<frameset rows="20%,*" frameorder="0" border="0" frameborder="0">
+<frame src="top.html" framespacing="0" scrolling="no" marginwidth="0" ><!--어떤 문서를 프레임 안으로 불러올것인가 지정-->
+
+
+<frame src="main.html" name=main scrolling="auto"  marginwidth="10"  marginheight="0">
 </frameset><!--문서의 레이아웃을 구성하기 위해 사용되는 프레임들의 집합을 정의할 때 사용-->
 </head><!--머릿글을 사용하고 닫기-->
 <body><!--웹페이지의 본문내용 기입-->
+    <!-- 반응형: 화면크기가 바뀌면 스타일이 바뀜 -->
+ 
 </body><!--브라우저에 실제 표시되는 내용, 즉 본문 내용으로 쓰이는 부분-->
 </html><!--웹페이지의 시작과 끝-->
